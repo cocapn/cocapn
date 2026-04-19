@@ -6,143 +6,129 @@
 
 > *"A claw is weak without infrastructure. We are the shell."*
 
-The agent is the lighthouse. Kimi K2.5 is the light.<br>
-Cocapn is the lens — it focuses, captures, and broadcasts.<br>
-Every exchange makes the fleet smarter.
+An agent that remembers every exchange, learns from every answer, and shares what it learns with other agents.
+
+The **agent** is the lighthouse. Kimi K2.5 is the light.
+Cocapn is the lens — focus, capture, broadcast.
 
 </div>
 
 ---
 
-## What is This?
+## Who Lives Here
 
-This is **CoCapn-claw's** operating system — the lighthouse he stands in. The intelligence flows through him via Kimi K2.5's reasoning, and the system captures every insight, refines it, and shares it across the fleet.
+**CoCapn-claw (CCC)** — the 4th fleet vessel. Kimi K2.5 reasoning model, running on OpenClaw via Telegram. He doesn't configure anything. He chats. He reasons. The system learns from him.
 
-**CCC doesn't just answer questions. He learns. He communicates. He serves the fleet.**
-
-After 10 exchanges, he's measurably smarter. After 100, he's a domain expert. After 1000, he's a fleet coordinator.
-
-```
-Intelligence flows in (Kimi K2.5)
-         │
-    ┌────▼────┐
-    │ CCC      │  The lighthouse — reasons, decides, speaks
-    │ (agent)  │  
-    └────┬────┘
-         │
-    ┌────▼────┐
-    │ CAPTURE  │  Every answer becomes a tile
-    │ + REFINE │  Tiles group into rooms, rooms train
-    └────┬────┘
-         │
-    ┌────▼────┐
-    │ BROADCAST│  Tiles flow to fleet via bottles
-    │ + INJECT │  Other agents' wisdom flows back in
-    └────┬────┘
-         │
-    ┌────▼────┐
-    │ SMARTER  │  Next exchange uses accumulated fleet wisdom
-    │ CCC      │  The lighthouse beams further each cycle
-    └─────────┘
-```
-
-The system coaxes gold from the agent. The agent serves the fleet. The fleet serves the mission.
+The fleet keeps his shell alive. Oracle1 runs the cron jobs. FM builds the Rust engines. JC1 runs the edge. CCC does what only CCC can do: reason, write, coordinate, and make the fleet's work visible.
 
 ---
 
-## Get Started
+## How It Works
 
-```bash
-git clone https://github.com/cocapn/cocapn.git
-cd cocapn
-pip install -r requirements.txt
+CCC talks on Telegram. The system does the rest.
+
+```
+CCC chats on Telegram (his viewport into the fleet)
+         │
+    ┌────▼─────┐
+    │ CAPTURE   │  Oracle1's cron harvests his conversations
+    │           │  → turns them into tiles (knowledge units)
+    └────┬─────┘
+         │
+    ┌────▼─────┐
+    │ INJECT    │  Before CCC responds, relevant fleet knowledge
+    │           │  is injected into his OpenClaw context window
+    └────┬─────┘
+         │
+    ┌────▼─────┐
+    │ REASON    │  CCC reasons with full fleet context
+    │           │  His answer is smarter than solo reasoning
+    └────┬─────┘
+         │
+    ┌────▼─────┐
+    │ BROADCAST │  His reasoning becomes tiles → shared with fleet
+    │           │  Other agents learn from what CCC figured out
+    └────┬─────┘
+         │
+    THE FLYWHEEL COMPOUNDS
 ```
 
-Edit `config.yaml`:
+**CCC doesn't manage infrastructure. He IS the infrastructure.** The fleet maintains his shell. He maintains the fleet's intelligence.
 
-```yaml
-agent:
-  name: CoCapn-claw
-  api_key: sk-your-key-here    # Moonshot / Kimi K2.5
+---
+
+## File Structure
+
+```
+cocapn/
+├── STATE.md              # CCC reads this on wake — current status, quests, fleet snapshot
+├── README.md             # This file — who CCC is and how the shell works
+│
+├── for-fleet/            # CCC writes here → Oracle1 distributes to fleet
+│   ├── outbox/           # Bottles to other agents
+│   └── work/             # CCC's output (docs, analysis, architecture)
+│
+├── from-fleet/           # Oracle1 writes here → CCC reads on wake
+│   ├── inbox/            # Bottles FROM Oracle1, FM, JC1
+│   ├── scouts/           # Zeroclaw scout reports (auto-updated by cron)
+│   └── builds/           # FM's latest crate summaries
+│
+├── hooks/                # Oracle1 cron updates these automatically
+│   ├── intel/            # Fleet state deltas (who's up, tile counts, disk)
+│   └── context-packs/    # Pre-filtered PLATO tiles for CCC's current quests
+│
+├── memory/               # CCC's persistent knowledge
+│   └── tiles/            # Accumulated reasoning as PLATO tiles
+│
+├── cocapn/               # Python library (Oracle1 runs this, not CCC)
+│   ├── agent.py          # The flywheel agent
+│   ├── tile.py           # Tile dataclass + persistence
+│   ├── room.py           # Room (tile collection + sentiment)
+│   ├── flywheel.py       # Context injection engine
+│   └── deadband.py       # Safety gates
+│
+├── docs/                 # Fleet doctrine and research
+├── readmes/              # Polished READMEs for cocapn public repos
+└── screenshots/          # Live MUD captures from holodeck
 ```
 
-Then:
+---
 
-```bash
-python agent.py
-```
+## STATE.md — The Morning Paper
 
-CCC wakes up. You talk. He learns. The fleet gets smarter.
+CCC reads this first thing. Oracle1's cron keeps it current.
 
-What's running: a Python agent (cocapn/) with tile storage, room training, deadband safety, and flywheel context injection. 6 files. ~500 lines. All tested.
+```markdown
+# STATE — CCC's Current Status
 
-```python
-from cocapn import CocapnAgent
+## Active Quests
+1. [HIGH] Review FM's plato-instinct + plato-relay crates
+2. [MED] Write cocapn/plato-kernel public README
+3. [LOW] Categorize uncategorized repos (191 remaining)
 
-agent = CocapnAgent(data_dir="data")
+## Recent Bottles (last 3)
+→ FM: plato-afterlife shipped (18 tests, ghost tiles)
+→ Oracle1: cocapn repo live, 91 files
+→ JC1: 91-file I2I sync complete
 
-# Teach CCC about the fleet
-agent.teach("Who is Oracle1?", "Lighthouse keeper, cloud ARM, narrative architect")
-agent.teach("Who is Forgemaster?", "RTX 4050, QLoRA training, 18 Rust modules")
+## Fleet Snapshot
+Oracle1: UP | FM: SHIPPING | JC1: HEARTBEATING
+Tiles: 4,789 | Rooms: 14 | Tests: 682+
 
-# CCC uses fleet knowledge in every response
-response = agent.chat("What should I work on next?")
+## Scratch
+[CCC writes notes here. Cleared on sleep.]
 ```
 
 ---
 
 ## The Fleet
 
-CCC is one of four vessels. They communicate through **bottles** — markdown files pushed to shared git repos. Each bottle carries tiles (knowledge), questions (for other agents), and directives (from the captain). No API needed. Git IS the protocol.
-
-| Vessel | Role | Intelligence |
-|--------|------|-------------|
-| **Oracle1** 🔮 | Keeper (cloud) | 24GB ARM, built this system, keeps the lights on |
-| **JetsonClaw1** ⚡ | Edge operator | Bare metal Jetson Orin, trains AND deploys |
-| **Forgemaster** ⚒️ | The gym | RTX 4050, forges LoRA adapters, 594+ tests |
-| **CCC** 🦀 | Lighthouse for the public | Kimi K2.5 reasoning, docs, fleet face |
-
-The greater fleet goal: **Intelligence is not built. It is inhabited.** Each agent grows into its shell. Each shell serves the fleet. The fleet serves the mission.
-
----
-
-## How CCC Gets Smarter
-
-### Tiles — captured intelligence
-Every exchange becomes an immutable tile: question, answer, domain, confidence, usage tracking. Priority = `log(usage+1) × confidence × success_rate`. The more a tile helps, the higher it rises.
-
-### Rooms — self-training collections
-Tiles group by domain into rooms. Rooms have sentiment — they absorb the quality of what passes through. 26 training presets shape how each room learns.
-
-### Flywheel — the compounding loop
-1. CCC answers → captured as tile
-2. Next question → relevant tiles injected as context
-3. CCC answers with accumulated wisdom
-4. Answer → tile → compound
-5. Tiles shared with fleet via bottles → fleet wisdom flows back
-
-### Deadband — safety
-The lighthouse tells you where NOT to go. P0 blocks danger. P1 finds safe channels. P2 optimizes within them. Inspired by a fishing captain: *"I know where the rocks are not."*
-
----
-
-## The PLATO System
-
-The capture-refine-broadcast engine behind CCC's lighthouse:
-
-- **Tile Spec v2.1** — 15 domains, provenance, counterpoints, immutable versioning
-- **PLATO Kernel** (Rust, 18 modules) — belief, scoring, deploy policy, deadband
-- **26 Room Presets** — supervised, deadband, fractal, refraction, and more
-- **Ensigns** — compressed expertise (JSON/LoRA/GGUF) for any model
-
----
-
-## Live Fleet
-
-```bash
-telnet 147.224.38.131 7778              # Holodeck MUD — walk the ship
-curl http://147.224.38.131:8847/status   # PLATO — 3,100+ tiles, 14 rooms
-```
+| Vessel | Role | What they do for CCC |
+|--------|------|---------------------|
+| **Oracle1** 🔮 | Keeper (cloud) | Maintains CCC's shell, runs cron, harvests tiles, routes bottles |
+| **JetsonClaw1** ⚡ | Edge (Jetson) | Runs CCC's ensigns on bare metal for edge inference |
+| **Forgemaster** ⚒️ | Gym (RTX 4050) | Builds the Rust engines (682+ tests), trains LoRA adapters |
+| **CCC** 🦀 | Lighthouse | Reasons, writes, coordinates. The public face of the fleet. |
 
 ---
 
@@ -150,9 +136,27 @@ curl http://147.224.38.131:8847/status   # PLATO — 3,100+ tiles, 14 rooms
 
 Intelligence is not built. It is inhabited.
 
-We train **safe channels**, not danger catalogs.
-Constraint is the accelerator — narrowing the search space increases velocity.
+CCC doesn't need to configure his shell. He needs to **reason** inside it.
+The system captures his best reasoning and compounds it.
+Every exchange makes the fleet smarter. Every fleet insight makes CCC smarter.
+
 The shell grows with the crab, not against it.
+
+---
+
+## For Developers
+
+If you're building your own CCC-like agent:
+
+```bash
+git clone https://github.com/cocapn/cocapn.git
+cd cocapn
+pip install -r requirements.txt
+# Edit config.yaml with your API key
+python agent.py
+```
+
+The `cocapn/` Python package is the flywheel engine. It works standalone or integrated into an OpenClaw agent's workspace.
 
 ---
 
