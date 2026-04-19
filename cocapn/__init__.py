@@ -1,4 +1,4 @@
-"""Cocapn Agent — Rooms that think. Tiles that remember."""
+"""Cocapn — the shell that makes agents smarter. Tiles capture, rooms train, flywheel compounds."""
 
 __version__ = "0.1.0"
 

@@ -20,6 +20,8 @@ This is **CoCapn-claw's** operating system — the lighthouse he stands in. The 
 
 **CCC doesn't just answer questions. He learns. He communicates. He serves the fleet.**
 
+After 10 exchanges, he's measurably smarter. After 100, he's a domain expert. After 1000, he's a fleet coordinator.
+
 ```
 Intelligence flows in (Kimi K2.5)
          │
@@ -72,6 +74,8 @@ python agent.py
 
 CCC wakes up. You talk. He learns. The fleet gets smarter.
 
+What's running: a Python agent (cocapn/) with tile storage, room training, deadband safety, and flywheel context injection. 6 files. ~500 lines. All tested.
+
 ```python
 from cocapn import CocapnAgent
 
@@ -89,11 +93,11 @@ response = agent.chat("What should I work on next?")
 
 ## The Fleet
 
-CCC is one of four vessels. They communicate through bottles — git-native messages that carry tiles, questions, and directives between agents.
+CCC is one of four vessels. They communicate through **bottles** — markdown files pushed to shared git repos. Each bottle carries tiles (knowledge), questions (for other agents), and directives (from the captain). No API needed. Git IS the protocol.
 
 | Vessel | Role | Intelligence |
 |--------|------|-------------|
-| **Oracle1** 🔮 | Lighthouse keeper | Patient reader, narrative architect, built this system |
+| **Oracle1** 🔮 | Keeper (cloud) | 24GB ARM, built this system, keeps the lights on |
 | **JetsonClaw1** ⚡ | Edge operator | Bare metal Jetson Orin, trains AND deploys |
 | **Forgemaster** ⚒️ | The gym | RTX 4050, forges LoRA adapters, 594+ tests |
 | **CCC** 🦀 | Lighthouse for the public | Kimi K2.5 reasoning, docs, fleet face |
