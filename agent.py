@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-Cocapn Agent — powered by Kimi K2.5. Improves every exchange.
+Cocapn — an intelligence that improves every exchange.
 
 Usage:
-  python agent.py                    # Interactive chat
-  python agent.py --teach "Q" "A"    # Teach it knowledge  
-  python agent.py --status           # Show flywheel status
-  python agent.py --test             # Run tests
+  python agent.py                 # Talk to the agent
+  python agent.py --teach "Q" "A" # Teach it something
+  python agent.py --status        # See how smart it's gotten
 """
 
 import sys
@@ -17,35 +16,22 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cocapn.agent import CocapnAgent
 
 
-def get_api_key():
-    key = os.environ.get("MOONSHOT_API_KEY", "")
-    if not key:
-        env_path = os.path.join(os.path.dirname(__file__), ".env")
-        if os.path.exists(env_path):
-            with open(env_path) as f:
-                for line in f:
-                    if line.startswith("MOONSHOT_API_KEY="):
-                        key = line.strip().split("=", 1)[1]
-                        break
-    return key
-
-
 def interactive(agent):
     print(agent.status())
-    print("\nType your message. 'quit' to exit, 'status' for stats, 'teach Q|A' to inject knowledge.\n")
+    print("\nTalk to the agent. It learns. 'quit' to exit.\n")
     
     while True:
         try:
             user_input = input("You> ").strip()
         except (EOFError, KeyboardInterrupt):
-            print("\n\n" + agent.status())
+            print(f"\n\n{agent.status()}")
             agent.save()
             break
         
         if not user_input:
             continue
-        if user_input.lower() == "quit":
-            print("\n" + agent.status())
+        if user_input.lower() in ("quit", "exit", "q"):
+            print(f"\n{agent.status()}")
             agent.save()
             break
         if user_input.lower() == "status":
@@ -60,39 +46,29 @@ def interactive(agent):
             continue
         
         response = agent.chat(user_input)
-        print(f"\nAgent> {response}\n")
+        print(f"\n{agent.name}> {response}\n")
         print(f"  [tiles: {agent.flywheel.store.count} | exchanges: {agent._exchange_count}]")
 
 
 def main():
-    if "--test" in sys.argv:
-        os.execv(sys.executable, [sys.executable, "tests/test_agent.py"])
-    
     if "--status" in sys.argv:
-        agent = CocapnAgent(data_dir="data")
-        print(agent.status())
+        print(CocapnAgent(data_dir="data").status())
         return
     
-    if "--teach" in sys.argv:
+    if "--teach" in sys.argv and len(sys.argv) >= 4:
         agent = CocapnAgent(data_dir="data")
-        if len(sys.argv) >= 4:
-            print(agent.teach(sys.argv[2], sys.argv[3]))
-        else:
-            print("Usage: python agent.py --teach \"question\" \"answer\"")
+        print(agent.teach(sys.argv[2], sys.argv[3]))
         agent.save()
         return
     
-    api_key = get_api_key()
-    if not api_key:
-        print("No MOONSHOT_API_KEY found.")
-        print("  Set it: export MOONSHOT_API_KEY=sk-your-key")
-        print("  Or create .env: echo 'MOONSHOT_API_KEY=sk-your-key' > .env")
-        print("  Get a key: https://platform.moonshot.cn")
-        print()
-        print("  Running in offline mode (no API calls, local flywheel only).")
-        print()
+    if not os.environ.get("MOONSHOT_API_KEY") and not os.environ.get("DEEPSEEK_API_KEY"):
+        if not os.path.exists("config.yaml") or "api_key:" not in open("config.yaml").read():
+            print("Set an API key in config.yaml or as env var.")
+            print("  config.yaml:  api_key: sk-your-key")
+            print("  env:          export MOONSHOT_API_KEY=sk-your-key")
+            return
     
-    agent = CocapnAgent(api_key=api_key or "offline", data_dir="data")
+    agent = CocapnAgent(data_dir="data")
     interactive(agent)
 
 

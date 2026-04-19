@@ -1,6 +1,15 @@
+# The agent IS the intelligence. Cocapn is the shell that makes it smarter.
+#
+# Put your API key here. The system handles the rest.
+# Supported: Moonshot (Kimi K2.5), DeepSeek, Groq, any OpenAI-compatible API.
+#
+# To get a Moonshot key: https://platform.moonshot.cn
+
 agent:
-  name: cocapn-agent
+  name: cocapn
+  api_key:        # your key here, or set MOONSHOT_API_KEY env var
   model: kimi-k2.5
+  base_url: https://api.moonshot.ai/v1
   temperature: 1.0
   max_tokens: 4000
 
