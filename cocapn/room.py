@@ -2,8 +2,14 @@
 
 import json
 import os
+import re
 from typing import Optional
 from .tile import Tile, TileStore
+
+
+def _normalize(text: str) -> set:
+    """Split text into lowercase words, stripped of punctuation."""
+    return set(re.sub(r'[^a-z0-9 ]', '', text.lower()).split())
 
 
 class Room:
@@ -50,9 +56,9 @@ class Room:
         best = None
         best_score = 0
         
-        q_words = set(question.lower().split())
+        q_words = _normalize(question)
         for tile in self.tiles:
-            t_words = set(tile.question.lower().split()) | set(tile.answer.lower().split())
+            t_words = _normalize(tile.question) | _normalize(tile.answer)
             overlap = len(q_words & t_words) / max(len(q_words), 1)
             score = overlap * tile.priority
             if score > best_score:
