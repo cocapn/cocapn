@@ -1,0 +1,34 @@
+agent:
+  name: cocapn-agent
+  model: kimi-k2.5
+  temperature: 1.0
+  max_tokens: 4000
+
+rooms:
+  - name: general
+    description: General knowledge and reasoning
+  - name: code
+    description: Code generation and review
+  - name: analysis
+    description: Deep analysis and research
+
+deadband:
+  enabled: true
+  dangerous_patterns:
+    - "rm -rf"
+    - "DROP TABLE"
+    - "DELETE FROM"
+    - "chmod 777"
+    - "eval("
+    - "sudo rm"
+  safe_channels:
+    - math
+    - search
+    - analysis
+    - safety
+    - code
+
+flywheel:
+  enabled: true
+  min_tiles_before_training: 5
+  confidence_threshold: 0.3
