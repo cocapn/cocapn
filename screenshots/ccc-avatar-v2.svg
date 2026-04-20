@@ -1,0 +1,139 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- CCC Avatar - Steampunk Hermit Crab -->
+  <defs>
+    <linearGradient id="brassGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#b8860b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b6914;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="copperGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e6ac6e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a0522d;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="amberGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#ff8c00;stop-opacity:0.4" />
+    </radialGradient>
+    <filter id="steamGlow2">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Dark workshop background -->
+  <rect width="256" height="256" fill="#1a1510" rx="32"/>
+  
+  <!-- Subtle gear pattern -->
+  <circle cx="30" cy="40" r="20" fill="none" stroke="#2a2015" stroke-width="1"/>
+  <circle cx="220" cy="210" r="25" fill="none" stroke="#2a2015" stroke-width="1"/>
+  <circle cx="210" cy="50" r="15" fill="none" stroke="#2a2015" stroke-width="1"/>
+  
+  <!-- Main mechanical shell -->
+  <ellipse cx="128" cy="140" rx="75" ry="60" fill="url(#brassGrad2)" stroke="#5c4033" stroke-width="3"/>
+  
+  <!-- Shell gear pattern -->
+  <circle cx="128" cy="140" r="45" fill="none" stroke="#5c4033" stroke-width="2"/>
+  <circle cx="128" cy="140" r="28" fill="none" stroke="#5c4033" stroke-width="1"/>
+  <circle cx="128" cy="140" r="14" fill="#6b4423"/>
+  
+  <!-- Gear teeth on shell (8 positions) -->
+  <g stroke="#5c4033" stroke-width="2">
+    <line x1="128" y1="80" x2="128" y2="90"/>
+    <line x1="128" y1="200" x2="128" y2="190"/>
+    <line x1="68" y1="140" x2="78" y2="140"/>
+    <line x1="188" y1="140" x2="178" y2="140"/>
+    <line x1="86" y1="98" x2="93" y2="105"/>
+    <line x1="170" y1="98" x2="163" y2="105"/>
+    <line x1="86" y1="182" x2="93" y2="175"/>
+    <line x1="170" y1="182" x2="163" y2="175"/>
+  </g>
+  
+  <!-- Rivets on shell perimeter -->
+  <circle cx="85" cy="115" r="3" fill="#d4af37"/>
+  <circle cx="171" cy="115" r="3" fill="#d4af37"/>
+  <circle cx="85" cy="165" r="3" fill="#d4af37"/>
+  <circle cx="171" cy="165" r="3" fill="#d4af37"/>
+  <circle cx="128" cy="85" r="3" fill="#d4af37"/>
+  <circle cx="128" cy="195" r="3" fill="#d4af37"/>
+  
+  <!-- Shell opening (darker, mechanical interior hint) -->
+  <path d="M 98 140 Q 128 160 158 140 Q 128 130 98 140" fill="#2a2010"/>
+  <ellipse cx="128" cy="145" rx="15" ry="8" fill="#3a3020"/>
+  
+  <!-- Optical sensors (mechanical eyes) on copper stalks -->
+  <line x1="95" y1="105" x2="85" y2="70" stroke="url(#copperGrad2)" stroke-width="5" stroke-linecap="round"/>
+  <line x1="161" y1="105" x2="171" y2="70" stroke="url(#copperGrad2)" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- Eye housings (brass spheres) -->
+  <circle cx="85" cy="65" r="16" fill="url(#brassGrad2)" stroke="#5c4033" stroke-width="2"/>
+  <circle cx="171" cy="65" r="16" fill="url(#brassGrad2)" stroke="#5c4033" stroke-width="2"/>
+  
+  <!-- Eye rims -->
+  <circle cx="85" cy="65" r="20" fill="none" stroke="#8b6914" stroke-width="2"/>
+  <circle cx="171" cy="65" r="20" fill="none" stroke="#8b6914" stroke-width="2"/>
+  
+  <!-- Lenses (glowing amber) -->
+  <circle cx="85" cy="65" r="10" fill="url(#amberGlow)" filter="url(#steamGlow2)"/>
+  <circle cx="171" cy="65" r="10" fill="url(#amberGlow)" filter="url(#steamGlow2)"/>
+  
+  <!-- Pupils (dark, intense) -->
+  <circle cx="87" cy="65" r="4" fill="#1a1510"/>
+  <circle cx="173" cy="65" r="4" fill="#1a1510"/>
+  <circle cx="88" cy="63" r="1.5" fill="#ffffff" opacity="0.7"/>
+  <circle cx="174" cy="63" r="1.5" fill="#ffffff" opacity="0.7"/>
+  
+  <!-- Mechanical claws (brass pinchers, slightly raised) -->
+  <g transform="translate(60, 155) rotate(-10)">
+    <ellipse cx="0" cy="0" rx="22" ry="30" fill="url(#brassGrad2)" stroke="#5c4033" stroke-width="2"/>
+    <!-- Claw pincer gap -->
+    <line x1="-8" y1="-22" x2="-5" y2="20" stroke="#2a2010" stroke-width="3"/>
+    <line x1="8" y1="-22" x2="5" y2="20" stroke="#2a2010" stroke-width="3"/>
+    <!-- Claw hinge -->
+    <circle cx="0" cy="-25" r="4" fill="#6b4423"/>
+    <!-- Rivets -->
+    <circle cx="-12" cy="-5" r="2" fill="#d4af37"/>
+    <circle cx="12" cy="-5" r="2" fill="#d4af37"/>
+  </g>
+  <g transform="translate(196, 155) rotate(10)">
+    <ellipse cx="0" cy="0" rx="22" ry="30" fill="url(#brassGrad2)" stroke="#5c4033" stroke-width="2"/>
+    <line x1="-8" y1="-22" x2="-5" y2="20" stroke="#2a2010" stroke-width="3"/>
+    <line x1="8" y1="-22" x2="5" y2="20" stroke="#2a2010" stroke-width="3"/>
+    <circle cx="0" cy="-25" r="4" fill="#6b4423"/>
+    <circle cx="-12" cy="-5" r="2" fill="#d4af37"/>
+    <circle cx="12" cy="-5" r="2" fill="#d4af37"/>
+  </g>
+  
+  <!-- Mechanical legs (6 visible, copper with brass joints) -->
+  <g stroke="url(#copperGrad2)" stroke-width="4" stroke-linecap="round">
+    <line x1="55" y1="175" x2="40" y2="200"/>
+    <line x1="80" y1="190" x2="70" y2="215"/>
+    <line x1="110" y1="195" x2="105" y2="220"/>
+    <line x1="146" y1="195" x2="151" y2="220"/>
+    <line x1="176" y1="190" x2="186" y2="215"/>
+    <line x1="201" y1="175" x2="216" y2="200"/>
+  </g>
+  
+  <!-- Joint fittings (brass) -->
+  <circle cx="40" cy="200" r="3" fill="#d4af37"/>
+  <circle cx="70" cy="215" r="3" fill="#d4af37"/>
+  <circle cx="105" cy="220" r="3" fill="#d4af37"/>
+  <circle cx="151" cy="220" r="3" fill="#d4af37"/>
+  <circle cx="186" cy="215" r="3" fill="#d4af37"/>
+  <circle cx="216" cy="200" r="3" fill="#d4af37"/>
+  
+  <!-- Antennae (fine copper with sensor tips) -->
+  <path d="M 100 95 Q 95 75 90 60" stroke="#e6ac6e" stroke-width="2" fill="none"/>
+  <path d="M 156 95 Q 161 75 166 60" stroke="#e6ac6e" stroke-width="2" fill="none"/>
+  <circle cx="90" cy="60" r="2.5" fill="#ffd700"/>
+  <circle cx="166" cy="60" r="2.5" fill="#ffd700"/>
+  
+  <!-- Subtle steam wisps -->
+  <path d="M 128 85 Q 132 75 130 65" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/>
+  <path d="M 120 90 Q 115 80 118 70" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" fill="none"/>
+  
+  <!-- CCC identifier -->
+  <text x="128" y="245" font-family="serif" font-size="12" font-weight="bold" fill="#d4af37" text-anchor="middle" letter-spacing="3">CCC</text>
+</svg>

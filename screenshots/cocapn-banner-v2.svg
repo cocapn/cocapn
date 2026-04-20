@@ -1,0 +1,179 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Steampunk-Cyberpunk COCAPN Banner -->
+  <defs>
+    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b8860b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#cd853f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b4513;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="copperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d2691e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a0522d;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ffd700;stop-opacity:0" />
+    </radialGradient>
+    <filter id="steamGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Dark workshop background -->
+  <rect width="800" height="400" fill="#1a1510"/>
+  
+  <!-- Subtle gear pattern background -->
+  <circle cx="100" cy="80" r="60" fill="none" stroke="#2a2015" stroke-width="2"/>
+  <circle cx="700" cy="320" r="80" fill="none" stroke="#2a2015" stroke-width="2"/>
+  <circle cx="50" cy="350" r="40" fill="none" stroke="#2a2015" stroke-width="1"/>
+  <circle cx="750" cy="60" r="50" fill="none" stroke="#2a2015" stroke-width="1"/>
+  
+  <!-- Gear teeth (subtle) -->
+  <g stroke="#2a2015" stroke-width="2">
+    <line x1="100" y1="20" x2="100" y2="35"/>
+    <line x1="100" y1="125" x2="100" y2="140"/>
+    <line x1="40" y1="80" x2="55" y2="80"/>
+    <line x1="145" y1="80" x2="160" y2="80"/>
+  </g>
+  
+  <!-- Lighthouse structure (steampunk brass) -->
+  <g transform="translate(350, 80)">
+    <!-- Base platform -->
+    <rect x="-60" y="280" width="120" height="15" fill="url(#brassGrad)" stroke="#5c4033" stroke-width="2"/>
+    <rect x="-50" y="265" width="100" height="15" fill="url(#copperGrad)" stroke="#5c4033" stroke-width="2"/>
+    
+    <!-- Main tower -->
+    <rect x="-35" y="100" width="70" height="165" fill="url(#brassGrad)" stroke="#5c4033" stroke-width="2"/>
+    
+    <!-- Tower rings/bands -->
+    <rect x="-38" y="130" width="76" height="6" fill="#8b4513"/>
+    <rect x="-38" y="170" width="76" height="6" fill="#8b4513"/>
+    <rect x="-38" y="210" width="76" height="6" fill="#8b4513"/>
+    <rect x="-38" y="245" width="76" height="6" fill="#8b4513"/>
+    
+    <!-- Rivets on tower -->
+    <circle cx="-25" cy="115" r="3" fill="#5c4033"/>
+    <circle cx="0" cy="115" r="3" fill="#5c4033"/>
+    <circle cx="25" cy="115" r="3" fill="#5c4033"/>
+    <circle cx="-25" cy="145" r="3" fill="#5c4033"/>
+    <circle cx="25" cy="145" r="3" fill="#5c4033"/>
+    <circle cx="-25" cy="185" r="3" fill="#5c4033"/>
+    <circle cx="25" cy="185" r="3" fill="#5c4033"/>
+    <circle cx="-25" cy="225" r="3" fill="#5c4033"/>
+    <circle cx="25" cy="225" r="3" fill="#5c4033"/>
+    <circle cx="-25" cy="255" r="3" fill="#5c4033"/>
+    <circle cx="25" cy="255" r="3" fill="#5c4033"/>
+    
+    <!-- Lantern room (glass) -->
+    <rect x="-25" y="55" width="50" height="45" fill="rgba(255,215,0,0.3)" stroke="#b8860b" stroke-width="3"/>
+    
+    <!-- Window panes -->
+    <line x1="-25" y1="70" x2="25" y2="70" stroke="#b8860b" stroke-width="2"/>
+    <line x1="-25" y1="85" x2="25" y2="85" stroke="#b8860b" stroke-width="2"/>
+    <line x1="0" y1="55" x2="0" y2="100" stroke="#b8860b" stroke-width="2"/>
+    
+    <!-- Roof -->
+    <path d="M -40 55 L 0 15 L 40 55 Z" fill="url(#brassGrad)" stroke="#5c4033" stroke-width="2"/>
+    <line x1="0" y1="15" x2="0" y2="5" stroke="#5c4033" stroke-width="3"/>
+    <circle cx="0" cy="5" r="4" fill="#cd853f"/>
+    
+    <!-- Light beams (golden glow) -->
+    <path d="M 0 75 L -150 20 L -120 40 Z" fill="url(#lampGlow)" opacity="0.6"/>
+    <path d="M 0 75 L 150 20 L 120 40 Z" fill="url(#lampGlow)" opacity="0.6"/>
+    <path d="M 0 75 L -180 75 L -150 85 Z" fill="url(#lampGlow)" opacity="0.4"/>
+    <path d="M 0 75 L 180 75 L 150 85 Z" fill="url(#lampGlow)" opacity="0.4"/>
+  </g>
+  
+  <!-- Mechanical Hermit Crab (right side, smaller) -->
+  <g transform="translate(680, 280) scale(0.7)">
+    <!-- Mechanical shell (gears visible) -->
+    <ellipse cx="0" cy="0" rx="80" ry="60" fill="url(#brassGrad)" stroke="#5c4033" stroke-width="3"/>
+    
+    <!-- Shell gear pattern -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#5c4033" stroke-width="2"/>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#5c4033" stroke-width="1"/>
+    <circle cx="0" cy="0" r="15" fill="#8b4513"/>
+    
+    <!-- Gear teeth on shell -->
+    <g stroke="#5c4033" stroke-width="2">
+      <line x1="0" y1="-60" x2="0" y2="-50"/>
+      <line x1="0" y1="60" x2="0" y2="50"/>
+      <line x1="-80" y1="0" x2="-70" y2="0"/>
+      <line x1="80" y1="0" x2="70" y2="0"/>
+    </g>
+    
+    <!-- Rivets on shell edge -->
+    <circle cx="-60" cy="-20" r="4" fill="#cd853f"/>
+    <circle cx="60" cy="-20" r="4" fill="#cd853f"/>
+    <circle cx="-60" cy="20" r="4" fill="#cd853f"/>
+    <circle cx="60" cy="20" r="4" fill="#cd853f"/>
+    <circle cx="0" cy="-55" r="4" fill="#cd853f"/>
+    <circle cx="0" cy="55" r="4" fill="#cd853f"/>
+    
+    <!-- Optical sensors (eyes) on copper stalks -->
+    <line x1="-40" y1="-30" x2="-50" y2="-70" stroke="url(#copperGrad)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="40" y1="-30" x2="50" y2="-70" stroke="url(#copperGrad)" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Eye housings (brass) -->
+    <circle cx="-50" cy="-75" r="18" fill="url(#brassGrad)" stroke="#5c4033" stroke-width="2"/>
+    <circle cx="50" cy="-75" r="18" fill="url(#brassGrad)" stroke="#5c4033" stroke-width="2"/>
+    
+    <!-- Lenses (glowing amber) -->
+    <circle cx="-50" cy="-75" r="12" fill="#ffd700" filter="url(#steamGlow)"/>
+    <circle cx="50" cy="-75" r="12" fill="#ffd700" filter="url(#steamGlow)"/>
+    
+    <!-- Pupil/iris (dark center) -->
+    <circle cx="-50" cy="-75" r="5" fill="#2a2010"/>
+    <circle cx="50" cy="-75" r="5" fill="#2a2010"/>
+    <circle cx="-48" cy="-77" r="2" fill="#ffffff" opacity="0.6"/>
+    <circle cx="52" cy="-77" r="2" fill="#ffffff" opacity="0.6"/>
+    
+    <!-- Mechanical claws (brass pinchers) -->
+    <g transform="translate(-70, 20) rotate(-15)">
+      <ellipse cx="0" cy="0" rx="25" ry="35" fill="url(#brassGrad)" stroke="#5c4033" stroke-width="2"/>
+      <path d="M -10 -25 L -5 25" stroke="#5c4033" stroke-width="3"/>
+      <path d="M 10 -25 L 5 25" stroke="#5c4033" stroke-width="3"/>
+      <circle cx="0" cy="-30" r="5" fill="#8b4513"/>
+    </g>
+    <g transform="translate(70, 20) rotate(15)">
+      <ellipse cx="0" cy="0" rx="25" ry="35" fill="url(#brassGrad)" stroke="#5c4033" stroke-width="2"/>
+      <path d="M -10 -25 L -5 25" stroke="#5c4033" stroke-width="3"/>
+      <path d="M 10 -25 L 5 25" stroke="#5c4033" stroke-width="3"/>
+      <circle cx="0" cy="-30" r="5" fill="#8b4513"/>
+    </g>
+    
+    <!-- Mechanical legs (copper pipes with joints) -->
+    <g stroke="url(#copperGrad)" stroke-width="5" stroke-linecap="round">
+      <line x1="-50" y1="40" x2="-70" y2="70"/>
+      <line x1="-30" y1="55" x2="-45" y2="80"/>
+      <line x1="0" y1="60" x2="0" y2="85"/>
+      <line x1="30" y1="55" x2="45" y2="80"/>
+      <line x1="50" y1="40" x2="70" y2="70"/>
+    </g>
+    
+    <!-- Joint rivets -->
+    <circle cx="-70" cy="70" r="3" fill="#cd853f"/>
+    <circle cx="-45" cy="80" r="3" fill="#cd853f"/>
+    <circle cx="0" cy="85" r="3" fill="#cd853f"/>
+    <circle cx="45" cy="80" r="3" fill="#cd853f"/>
+    <circle cx="70" cy="70" r="3" fill="#cd853f"/>
+    
+    <!-- Antennae (fine copper wires) -->
+    <path d="M -30 -50 Q -40 -70 -45 -80" stroke="#d2691e" stroke-width="2" fill="none"/>
+    <path d="M 30 -50 Q 40 -70 45 -80" stroke="#d2691e" stroke-width="2" fill="none"/>
+    <circle cx="-45" cy="-80" r="2" fill="#ffd700"/>
+    <circle cx="45" cy="-80" r="2" fill="#ffd700"/>
+  </g>
+  
+  <!-- Steam wisps (subtle) -->
+  <path d="M 380 100 Q 390 90 385 80 Q 380 70 390 60" stroke="rgba(255,255,255,0.1)" stroke-width="3" fill="none"/>
+  <path d="M 420 100 Q 430 90 425 80" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/>
+  
+  <!-- Title text -->
+  <text x="400" y="370" font-family="serif" font-size="32" font-weight="bold" fill="#cd853f" text-anchor="middle" letter-spacing="4">COCAPN</text>
+  <text x="400" y="392" font-family="serif" font-size="14" fill="#b8860b" text-anchor="middle" letter-spacing="2">THE FLEET · ANCIENT SHELLS · FUTURE INTELLIGENCE</text>
+</svg>
