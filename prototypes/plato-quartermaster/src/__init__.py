@@ -13,6 +13,7 @@ __version__ = "0.1.0"
 from .quartermaster import Quartermaster, TranscendenceLevel, SystemVitals, DigestionTask
 from .selftrain import SelfTrainingPipeline, DecisionRecord
 from .reflex import ReflexArc, ReflexType, reflex_registry, register_reflex, check_all_reflexes
+from .homunculus import FleetHomunculus, Vessel, VesselStatus, PainSignal
 
 __all__ = [
     "Quartermaster",
@@ -26,4 +27,8 @@ __all__ = [
     "reflex_registry",
     "register_reflex",
     "check_all_reflexes",
+    "FleetHomunculus",
+    "Vessel",
+    "VesselStatus",
+    "PainSignal",
 ]
