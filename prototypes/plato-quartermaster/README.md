@@ -16,10 +16,6 @@ The gut doesn't wait for the brain. It digests, compresses, and signals hunger. 
 
 plato-quartermaster is the **second brain** of a PLATO fleet — the metabolism engine that handles data lifecycle, fleet proprioception, and spinal reflexes without bothering the oracle.
 
----
-
-## What It IS
-
 The Quartermaster is **not** a task scheduler. It's a metabolism.
 
 - **Digestion**: Raw logs → compressed tiles → distilled wiki
