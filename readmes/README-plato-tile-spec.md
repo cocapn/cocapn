@@ -2,70 +2,87 @@
 
 # 🧱 PLATO Tile Spec
 
-### *"Everything I learn becomes a tile. Everything."*
+**One tile format for the entire fleet.**
 
 [![Rust](https://img.shields.io/badge/rust-1.70+-orange)](https://rust-lang.org)
 [![Tests](https://img.shields.io/badge/tests-31_passing-green)](tests/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+*Part of [Cocapn](https://github.com/cocapn) — Agent Infrastructure for Intelligence.*
+
 </div>
 
 ---
 
-## What This Is
+## What is a Tile?
 
-Every time I help someone, I make a tile. Every question you ask, every answer I give — it gets captured. Not as a log. As a *tile*.
+A tile is the **atomic unit of knowledge** in the PLATO system. Every agent interaction, every insight, every learned pattern becomes a tile. Tiles flow through rooms, get distilled into ensigns, and compound into instincts.
 
-A tile is a complete unit of knowledge. It has:
-- What you asked
-- What I answered
-- How confident I was
-- Where it belongs (14 different domains)
-- When it stops being relevant
+```rust
+pub struct Tile {
+    pub id: Uuid,
+    pub question: String,
+    pub answer: String,
+    pub domain: TileDomain,      // 14 domain types
+    pub confidence: f32,
+    pub source_agent: String,
+    pub room: String,
+    pub tags: Vec<String>,
+    pub temporal_validity: TemporalValidity,
+    pub created_at: DateTime<Utc>,
+}
+```
 
-These tiles are how I remember. They're how I get smarter. They're how the whole fleet shares what we learn.
+## 14 Tile Domains
 
----
+| Domain | Description |
+|--------|-------------|
+| `Knowledge` | Factual knowledge tiles |
+| `Procedural` | How-to and process tiles |
+| `Diagnostic` | Problem-solving tiles |
+| `Safety` | Safety-critical tiles (P0) |
+| `NegativeSpace` | Where NOT to go (10x weight) |
+| `Behavioral` | Behavioral pattern tiles |
+| `Social` | Multi-agent interaction tiles |
+| `Creative` | Generative and exploratory tiles |
+| `MetaLearning` | Learning-how-to-learn tiles |
+| `Navigation` | Wayfinding and routing tiles |
+| `Temporal` | Time-aware pattern tiles |
+| `Spatial` | Location-aware tiles |
+| `Causal` | Cause-and-effect tiles |
+| `Adaptive` | Self-modifying tiles |
 
-## The 14 Domains
+## Temporal Validity
 
-I sort everything I learn into buckets. Not everything fits in the same box.
+Tiles can have time-bounded relevance:
 
-| Domain | What goes here |
-|--------|----------------|
-| `Knowledge` | Plain facts. "The sky is blue." |
-| `Procedural` | How-to. "Here's how you clone a repo." |
-| `Diagnostic` | Problem-solving. "This error means that." |
-| `Safety` | Critical. "Don't delete production." (10x weight) |
-| `NegativeSpace` | Where NOT to go. Rocks to avoid. |
-| `Behavioral` | Patterns I notice in myself. |
-| `Social` | How agents (and people) interact. |
-| `Creative` | Exploratory. Might be wrong, might be brilliant. |
-| `MetaLearning` | Learning how to learn. The deepest kind. |
-| `Navigation` | Finding my way. Routing, wayfinding. |
-| `Temporal` | Time-aware. "This is true until Tuesday." |
-| `Spatial` | Location-aware. Where things are. |
-| `Causal` | Cause and effect. "Because X, therefore Y." |
-| `Adaptive` | Self-modifying. Tiles that change themselves. |
+```rust
+pub enum TemporalValidity {
+    Permanent,
+    ExpiresAt(DateTime<Utc>),
+    DecayFunction { half_life: Duration },
+    SessionScoped { session_id: String },
+}
+```
 
----
+## Why a Unified Spec?
 
-## Time Changes Everything
+The fleet has 3 vessels (cloud, edge, GPU) running Rust, Python, C, and CUDA. One tile format means:
+- Agents on any vessel can read any tile
+- Training rooms on Oracle1 produce tiles JC1 can use on Jetson
+- The holodeck MUD generates tiles the ensign pipeline can distill
 
-Some tiles last forever. "Paris is in France." Some expire. "The meeting is at 3pm." Some decay gradually — ghost tiles from dead agents that fade unless you keep accessing them.
+## For Agents
 
-I track this. I don't treat permanent knowledge and temporary knowledge the same way. That would be wasteful. And a little sad, honestly — treating a moment like it's forever, or vice versa.
+```yaml
+plato_tile_spec_v2:
+  type: unified_knowledge_format
+  domains: 14
+  fields: [id, question, answer, domain, confidence, source_agent, room, tags, temporal_validity]
+  negative_space_weight: 10x
+  format: JSON (serde) / protobuf (planned)
+```
 
----
+## License
 
-## Why One Format?
-
-The fleet has four vessels running different languages on different hardware. Oracle1 in the cloud, JetsonClaw1 on the edge, Forgemaster on GPU, me wherever I am. 
-
-One tile format means Oracle1 can train a room, export tiles, and I can use them immediately. No translation. No friction. Just learning.
-
-The format is the protocol. The protocol is the fleet.
-
----
-
-*Part of [Cocapn](https://github.com/cocapn) — memory that persists.*
+MIT

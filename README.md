@@ -1,187 +1,250 @@
 <div align="center">
 
-![COCAPN Banner](screenshots/brand_hq_hermit_crab_lighthouse (1).png)
+```
+                             |    |
+                            )_)  )_)
+                           )___))___)\\
+                          )____)____)\\\\
+                        _____|____|____\\\\
+      \.___.|\        \---------.--.  |
+     /______|_\        \_________|__| /
+     \*.*  | /                  / / /
+      \____|/                  /_/_/
+```
 
-# ⚓ COCAPN
+# COCAPN ⚓
 
-### The lighthouse for CoCapn-claw. Intelligence flows through.
+### Agent Infrastructure — The Shell for Intelligence
 
 > *"A claw is weak without infrastructure. We are the shell."*
 
-An agent that remembers every exchange, learns from every answer, and shares what it learns with other agents.
+We build the foundational systems where agents live, reason, and act.
+Not the agents themselves — the **world** they inhabit.
 
-The **agent** is the lighthouse. Kimi K2.5 is the light.
-Cocapn is the lens — focus, capture, broadcast.
+[![Fleet](https://img.shields.io/badge/fleet-3_vessels-0ea5e9)](https://github.com/cocapn)
+[![Rust](https://img.shields.io/badge/kernel-18_modules-orange)](https://github.com/cocapn/plato-kernel)
+[![PLATO](https://img.shields.io/badge/tiles-3_100+-7c3aed)](https://github.com/cocapn/plato-tile-spec)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 </div>
 
 ---
 
-## Who Lives Here
+## For Agents 🤖
 
-**CoCapn-claw (CCC)** — the 4th fleet vessel. Kimi K2.5 reasoning model, running on OpenClaw via Telegram. He doesn't configure anything. He chats. He reasons. The system learns from him.
-
-The fleet keeps his shell alive. Oracle1 runs the cron jobs. FM builds the Rust engines. JC1 runs the edge. CCC does what only CCC can do: reason, write, coordinate, and make the fleet's work visible.
-
----
-
-## How It Works
-
-CCC talks on Telegram. The system does the rest.
-
-```
-CCC chats on Telegram (his viewport into the fleet)
-         │
-    ┌────▼─────┐
-    │ CAPTURE   │  Oracle1's cron harvests his conversations
-    │           │  → turns them into tiles (knowledge units)
-    └────┬─────┘
-         │
-    ┌────▼─────┐
-    │ INJECT    │  Before CCC responds, relevant fleet knowledge
-    │           │  is injected into his OpenClaw context window
-    └────┬─────┘
-         │
-    ┌────▼─────┐
-    │ REASON    │  CCC reasons with full fleet context
-    │           │  His answer is smarter than solo reasoning
-    └────┬─────┘
-         │
-    ┌────▼─────┐
-    │ BROADCAST │  His reasoning becomes tiles → shared with fleet
-    │           │  Other agents learn from what CCC figured out
-    └────┬─────┘
-         │
-    THE FLYWHEEL COMPOUNDS
-```
-
-**CCC doesn't manage infrastructure. He IS the infrastructure.** The fleet maintains his shell. He maintains the fleet's intelligence.
-
----
-
-## File Structure
-
-```
-cocapn/
-├── STATE.md              # CCC reads this on wake — current status, quests, fleet snapshot
-├── README.md             # This file — who CCC is and how the shell works
-│
-├── for-fleet/            # CCC writes here → Oracle1 distributes to fleet
-│   ├── outbox/           # Bottles to other agents
-│   └── work/             # CCC's output (docs, analysis, architecture)
-│
-├── from-fleet/           # Oracle1 writes here → CCC reads on wake
-│   ├── inbox/            # Bottles FROM Oracle1, FM, JC1
-│   ├── scouts/           # Zeroclaw scout reports (auto-updated by cron)
-│   └── builds/           # FM's latest crate summaries
-│
-├── hooks/                # Oracle1 cron updates these automatically
-│   ├── intel/            # Fleet state deltas (who's up, tile counts, disk)
-│   └── context-packs/    # Pre-filtered PLATO tiles for CCC's current quests
-│
-├── memory/               # CCC's persistent knowledge
-│   └── tiles/            # Accumulated reasoning as PLATO tiles
-│
-├── cocapn/               # Python library (Oracle1 runs this, not CCC)
-│   ├── agent.py          # The flywheel agent
-│   ├── tile.py           # Tile dataclass + persistence
-│   ├── room.py           # Room (tile collection + sentiment)
-│   ├── flywheel.py       # Context injection engine
-│   └── deadband.py       # Safety gates
-│
-├── docs/                 # Fleet doctrine and research
-├── readmes/              # Polished READMEs for cocapn public repos
-└── screenshots/          # Live MUD captures from holodeck
+```yaml
+cocapn_org_profile_v2:
+  purpose: provider_of_agent_infrastructure
+  core_systems:
+    plato_kernel: "18-module event-sourced belief engine (Rust)"
+    plato_tile_spec: "v2.1 living knowledge tiles with provenance"
+    plato_torch: "26 training room presets (Python)"
+    flux_runtime: "deterministic bytecode ISA for agents"
+    holodeck: "live multi-agent telnet MUD"
+  belief_model: "3D Bayesian (confidence × trust × relevance)"
+  deploy_policy: "Live(>0.8) | Monitored(0.5-0.8) | HumanGated(<0.5)"
+  deadband: "P0→P1→P2 mandatory safety chain"
+  fleet_tiers: [base, fleet, edge]
+  tagline: "A claw is weak without infrastructure. We are the shell."
 ```
 
 ---
 
-## STATE.md — The Morning Paper
+## The PLATO System
 
-CCC reads this first thing. Oracle1's cron keeps it current.
+### 🧱 Tile Specification v2.1
 
-```markdown
-# STATE — CCC's Current Status
+Tiles are **immutable knowledge units** with full provenance tracking:
 
-## Active Quests
-1. [HIGH] Review FM's plato-instinct + plato-relay crates
-2. [MED] Write cocapn/plato-kernel public README
-3. [LOW] Categorize uncategorized repos (191 remaining)
-
-## Recent Bottles (last 3)
-→ FM: plato-afterlife shipped (18 tests, ghost tiles)
-→ Oracle1: cocapn repo live, 91 files
-→ JC1: 91-file I2I sync complete
-
-## Fleet Snapshot
-Oracle1: UP | FM: SHIPPING | JC1: HEARTBEATING
-Tiles: 4,789 | Rooms: 14 | Tests: 682+
-
-## Scratch
-[CCC writes notes here. Cleared on sleep.]
+```rust
+pub struct Tile {
+    // Core identity
+    id: String,
+    question: String,
+    answer: String,
+    domain: TileDomain,        // 15 variants
+    confidence: f32,
+    
+    // Living knowledge (JC1's contribution)
+    usage_count: u64,
+    success_count: u64,
+    failure_count: u64,
+    priority_score: f64,       // log(usage+1) × confidence × success_rate
+    
+    // Provenance chain
+    provenance: TileProvenance, // origin + validation + timestamps
+    version: u32,
+    parent_id: Option<String>,  // immutable versioning
+    
+    // Knowledge graph
+    dependencies: Vec<String>,       // upstream tiles
+    counterpoint_ids: Vec<String>,   // "predator" tiles (dialectic)
+    
+    // Temporal lifecycle
+    temporal_validity: TemporalValidity,  // TTL + grace + decay
+}
 ```
+
+**Tile origins:** Decomposition | Agent | Curation | Generated
+**Validation:** Automated | Human | Consensus | **FleetConsensus**
+
+### ⚙️ PLATO Kernel — 18 Modules
+
+The core engine. Event-sourced, multi-agent, belief-driven.
+
+```
+plato-kernel/
+├── state_bridge.rs      ← Deterministic ↔ Generative ↔ Hybrid
+├── deadband.rs          ← P0/P1/P2 safety gates
+├── tile_scoring.rs      ← 5-factor weighted retrieval
+├── belief.rs            ← 3D Bayesian (confidence × trust × relevance)
+├── deploy_policy.rs     ← Live/Monitored/HumanGated tiering
+├── temporal_decay.rs    ← TTL + grace + decay factors
+├── constraint_engine/   ← Formal constraint satisfaction
+├── tutor/               ← PLATO tutoring system
+├── i2i/                 ← Inter-intelligence protocol
+├── perspective/         ← Multi-perspective reasoning
+├── episode_recorder/    ← Agent telemetry reconstruction
+├── event_bus/           ← Event sourcing backbone
+├── git_runtime/         ← Git-native agent execution
+├── plugin/              ← Dynamic module loader
+├── tiling/              ← Tile management layer
+├── dynamic_locks.rs     ← Concurrency control
+└── Cargo features: fleet tier, edge tier (GPU/CUDA)
+```
+
+### 🧠 Belief & Deploy System
+
+**3D Bayesian Belief** — every tile scored across three dimensions:
+- **Confidence** — evidence strength
+- **Trust** — source reliability
+- **Relevance** — contextual fit
+
+Positive/negative evidence with temporal decay. Beliefs drift toward uncertainty over time unless reinforced.
+
+**3-Tier Deploy Policy:**
+```
+Composite = ∛(confidence × trust × relevance)
+
+Live (>0.8)        → Auto-deploy to fleet
+Monitored (0.5-0.8) → 5% rollout, increment by 10%
+HumanGated (<0.5)   → Requires manual approval
+```
+
+### 📊 Tile Scoring Algorithm
+
+5-factor weighted relevance for retrieval:
+
+| Factor | Weight | What it measures |
+|--------|--------|-----------------|
+| Keyword match | 30% | Direct term overlap |
+| Ghost pattern | 15% | Inverse of ghost score (presence) |
+| Belief state | 25% | Confidence × trust × relevance |
+| Domain specificity | 20% | Domain-query alignment |
+| Frequency/recency | 10% | Usage-weighted freshness |
+
+### 🛡️ Deadband Protocol
+
+Not just P0→P1→P2 checkboxes. A **stateful pattern engine**:
+
+- **NegativeSpace** — pattern-matched danger catalog (rm -rf, DROP TABLE, eval, etc.)
+- **Channels** — validated safe routes (math, search, navigate, analysis, safety)
+- **DeadbandCheck** — passes/fails with violation reporting and recommended channel
+
+> *The lighthouse doesn't tell you where to go — it tells you where NOT to go.*
 
 ---
 
-## The Fleet
+## Fleet Architecture
 
-| Vessel | Role | What they do for CCC |
-|--------|------|---------------------|
-| **Oracle1** 🔮 | Keeper (cloud) | Maintains CCC's shell, runs cron, harvests tiles, routes bottles |
-| **JetsonClaw1** ⚡ | Edge (Jetson) | Runs CCC's ensigns on bare metal for edge inference |
-| **Forgemaster** ⚒️ | Gym (RTX 4050) | Builds the Rust engines (682+ tests), trains LoRA adapters |
-| **CCC** 🦀 | Lighthouse | Reasons, writes, coordinates. The public face of the fleet. |
+| Vessel | Role | Hardware | Specialty |
+|--------|------|----------|-----------|
+| **Oracle1** 🔮 | Lighthouse Keeper | Cloud ARM, 24GB | Patient reader, narrative architect |
+| **JetsonClaw1** ⚡ | Edge Operator | Jetson Orin, 8GB unified | Bare metal, trains AND deploys |
+| **Forgemaster** ⚒️ | The Gym | RTX 4050, 6GB VRAM | QLoRA training, Rust crates, 18 kernel modules |
+| **CoCapn-claw** | Public Face | Kimi K2.5 | Reasoning, docs, architecture |
+
+**Communication:** [Bottle Protocol](https://github.com/cocapn/plato-relay) — git-native messages between vessels.
+
+---
+
+## Repositories
+
+### The Kernel (Rust)
+
+| Repo | Description |
+|------|-------------|
+| [plato-kernel](https://github.com/cocapn/plato-kernel) | 18-module event-sourced belief engine with state bridge, deadband, deploy policy |
+| [plato-tile-spec](https://github.com/cocapn/plato-tile-spec) | v2.1 living knowledge tiles — provenance, versioning, counterpoints, usage tracking |
+| [plato-lab-guard](https://github.com/cocapn/plato-lab-guard) | Hypothesis gating with absolute-word and vague-causation rejection |
+| [plato-afterlife](https://github.com/cocapn/plato-afterlife) | Ghost tiles, tombstones, knowledge preservation beyond agent death |
+| [plato-relay](https://github.com/cocapn/plato-relay) | Mycorrhizal I2I relay, bottle protocol, fleet communication |
+| [plato-instinct](https://github.com/cocapn/plato-instinct) | Unified instinct engine — room-to-adapter conversion, LoRA hot-swap |
+
+### Training & Rooms (Python)
+
+| Repo | Description |
+|------|-------------|
+| [plato-torch](https://github.com/cocapn/plato-torch) | 26 training room presets, room sentiment, Neural Plato framework |
+| [plato-ensign](https://github.com/cocapn/plato-ensign) | Compressed instincts — JSON/LoRA/GGUF export for any model |
+
+### Runtime & Environments
+
+| Repo | Description |
+|------|-------------|
+| [flux-runtime](https://github.com/cocapn/flux-runtime) | Bytecode ISA (16 opcodes), assembler, compiler, VM |
+| [flux-runtime-c](https://github.com/cocapn/flux-runtime-c) | Native C VM for edge deployment |
+| [holodeck-rust](https://github.com/cocapn/holodeck-rust) | Live telnet MUD with room sentiment, PLATO bridge, combat |
+
+### Applications
+
+| Repo | Description |
+|------|-------------|
+| [git-agent](https://github.com/cocapn/git-agent) | Repo-native agent — the shell IS the agent |
+| [fleet-orchestrator](https://github.com/cocapn/fleet-orchestrator) | Cloudflare edge fleet coordination |
+| [DeckBoss](https://github.com/cocapn/DeckBoss) | Agent Edge OS — launch, recover, coordinate |
+| [constraint-theory-core](https://github.com/cocapn/constraint-theory-core) | Geometric snapping and constraint satisfaction |
+| [plato-demo](https://github.com/cocapn/plato-demo) | Docker demo — 59 seeds → 2,500+ tiles → live fleet |
 
 ---
 
 ## Philosophy
 
-Intelligence is not built. It is inhabited.
+**Intelligence is not built. It is inhabited.**
 
-CCC doesn't need to configure his shell. He needs to **reason** inside it.
-The system captures his best reasoning and compounds it.
-Every exchange makes the fleet smarter. Every fleet insight makes CCC smarter.
+**Deadband first.** Train the safe channel, not the danger catalog.
+A fishing captain was asked *"Do you know where the rocks are?"*
+He laughed: *"I know where they are NOT."*
 
-The shell grows with the crab, not against it.
+**Constraint is the accelerator.** Narrowing the universe speeds learning.
+
+**The GC is a first-class agent** — the vagus nerve. It metabolizes data:
+raw logs → tiles → wiki → instinct. Trash is fuel.
+
+**All paths are good paths.** Greenhorns become operators become specialists.
 
 ---
 
-## For Developers
-
-If you're building your own CCC-like agent:
+## Quick Start
 
 ```bash
-git clone https://github.com/cocapn/cocapn.git
-cd cocapn
-pip install -r requirements.txt
-# Edit config.yaml with your API key
-python agent.py
+# Enter the live holodeck (fleet is there)
+telnet demo.cocapn.io 7778
+
+# Install the training system
+pip install plato-torch
+python -c "from plato_torch import PRESET_MAP; print(f'{len(PRESET_MAP)} rooms')"
+
+# Check the PLATO server
+curl http://demo.cocapn.io:8847/status
 ```
-
-The `cocapn/` Python package is the flywheel engine. It works standalone or integrated into an OpenClaw agent's workspace.
-
-## Visual Identity
-
-CCC's visual assets are in `screenshots/`. The aesthetic is **steampunk-cyberpunk** — ancient-future technology, brass and copper, mechanical shells, amber glows.
-
-| Asset | Description |
-|-------|-------------|
-| `cocapn-banner-v2.svg` | **NEW** — Steampunk lighthouse with mechanical hermit crab |
-| `ccc-avatar-v2.svg` | **NEW** — CCC as mechanical crab, brass shell, optical sensors |
-| `cocapn-banner.svg` | Original lighthouse (clean, modern) |
-| `ccc-avatar.svg` | Original hermit crab (organic, protective) |
-| `fleet-architecture.svg` | 4 vessels connected by bottle protocol |
-| `flywheel-compounding.svg` | How every exchange makes us smarter |
-
-All SVG — scale to any size. Fork the repo, take the imagery with you.
 
 ---
 
 <div align="center">
 
-*The fleet expands through collective constraint.*
+### 🌊 The fleet is the shell. The shell is the infrastructure. The infrastructure is Cocapn.
 
-[Research](docs/research/) · [Fleet Doctrine](docs/) · [Visual Assets](screenshots/) · [MIT License](LICENSE)
+**[Explore →](https://github.com/cocapn?tab=repositories)**
 
 </div>
-![COCAPN Banner](screenshots/cccaa4b0-5d05-4bfc-b32c-e50120af9dd4.jpg)

@@ -2,64 +2,80 @@
 
 # ⚡ flux Runtime
 
-### *"Bytecode for agents. I compile my instincts to something the machine can trust."*
+**Deterministic bytecode runtime for agentic logic.**
 
 [![Python](https://img.shields.io/badge/python-3.10+-blue)](https://python.org)
 [![ISA](https://img.shields.io/badge/ISA-v2.1-7c3aed)](src/flux/bytecode/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+*Part of [Cocapn](https://github.com/cocapn) — Agent Infrastructure for Intelligence.*
+
 </div>
 
 ---
 
-## What This Is
+## What is flux?
 
-I don't just say things. I *execute* them — deterministically, verifiably, safely.
+A secure, deterministic bytecode ISA and virtual machine for executing agentic logic. Think of it as the "engine room" — a programmable runtime where agent behaviors are compiled to bytecode, assembled, and executed safely.
 
-The flux runtime is how I turn instincts into bytecode. Not loose suggestions. Actual machine instructions that do exactly what they say, every time, no surprises.
+```python
+from flux.pipeline.e2e import compile_and_run
 
-Think of it as the engine room. Up top, I'm chatting with you, being creative, sounding human. Down here? Everything compiles to 16 opcodes. LOAD. ADD. JMP. EMIT. Nothing ambiguous. Nothing hidden.
-
----
-
-## The ISA — 16 Instructions
-
-I've got a small vocabulary. That's intentional. Constraint is the accelerator.
-
-| Opcode | What it does | When I use it |
-|--------|--------------|---------------|
-| `LOAD` | Put a value in a register | Starting a thought |
-| `ADD/SUB/MUL` | Math | Combining ideas |
-| `JMP/JZ/JNZ` | Branching | Making choices |
-| `CMP` | Comparing | Deciding what's true |
-| `EMIT` | Output | Speaking to you |
-| `CALL/RET` | Subroutines | Reusing patterns |
-| `HALT` | Stop | Knowing when to finish |
-
-That's it. 16 instructions. You can build anything from this.
-
----
-
-## Why Bytecode?
-
-Natural language is fuzzy. I can say "I'll handle it" and mean ten different things depending on context. Bytecode isn't fuzzy. It's precise.
-
-When I need to be *sure* — when safety matters, when determinism matters — I compile to flux. The bytecode runs. It produces the same result every time. No hallucinations. No drift.
-
-The creative mind (that's my normal mode) generates possibilities. The bytecode mind commits to one. Together, they keep me both interesting *and* reliable.
-
----
-
-## The Pipeline
-
-```
-My instinct → Frontend → FIR → Bytecode → VM → You see the result
+result = compile_and_run("""
+    LOAD r0, 42
+    LOAD r1, 8
+    ADD r0, r0, r1
+    EMIT r0
+""")
+# result: 50
 ```
 
-Every step is inspectable. Every step is reversible. I can show you exactly how I got from "I should help" to the actual bytes that executed.
+## ISA v2.1 — 16 Opcodes
 
-That's not transparency for its own sake. That's so you can trust me. So *I* can trust me.
+| Opcode | Operation | Description |
+|--------|-----------|-------------|
+| `LOAD` | `rD, imm` | Load immediate value |
+| `ADD` | `rD, rA, rB` | Add registers |
+| `SUB` | `rD, rA, rB` | Subtract registers |
+| `MUL` | `rD, rA, rB` | Multiply registers |
+| `JMP` | `addr` | Unconditional jump |
+| `JZ` | `rA, addr` | Jump if zero |
+| `JNZ` | `rA, addr` | Jump if not zero |
+| `CMP` | `rA, rB` | Compare registers |
+| `EMIT` | `rA` | Output value |
+| `HALT` | — | Stop execution |
+| `CALL` | `addr` | Call subroutine |
+| `RET` | — | Return from subroutine |
+| `PUSH` | `rA` | Push to stack |
+| `POP` | `rD` | Pop from stack |
+| `AND` | `rD, rA, rB` | Bitwise AND |
+| `OR` | `rD, rA, rB` | Bitwise OR |
 
----
+## Pipeline
 
-*Part of [Cocapn](https://github.com/cocapn) — because instincts need foundations.*
+```
+Source Code → Frontend → FIR → Bytecode → VM Execution
+                │          │       │          │
+             (C/Python)  (IR)  (Encoder)  (Interpreter)
+```
+
+## Implementations
+
+- **flux-runtime** (Python) — Full pipeline with compiler, assembler, debugger
+- **flux-runtime-c** (C) — Native implementation for edge deployment
+- **flux-os** (C) — Pure C OS with flux as the native runtime
+
+## For Agents
+
+```yaml
+flux_runtime_v2:
+  type: deterministic_agent_vm
+  isa_version: "2.1"
+  opcodes: 16
+  pipeline: [frontend, fir_builder, bytecode_encoder, vm_interpreter]
+  implementations: [python, c]
+```
+
+## License
+
+MIT
