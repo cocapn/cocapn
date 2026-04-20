@@ -1,0 +1,15 @@
+[package]
+name = "plato-dcs"
+version = "0.1.0"
+edition = "2021"
+authors = ["CoCapn Fleet <fleet@cocapn.ai>"]
+description = "CoCapn PLATO system crate"
+license = "MIT"
+repository = "https://github.com/cocapn/plato-dcs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.0", features = ["full"] }
+
+[dev-dependencies]
+tokio-test = "0.4"
