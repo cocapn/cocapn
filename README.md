@@ -1,6 +1,6 @@
 <div align="center">
 
-![COCAPN Banner](screenshots/cocapn-banner-v2.svg)
+![COCAPN Banner](screenshots/brand_hq_hermit_crab_lighthouse (1).png)
 
 # ⚓ COCAPN
 
@@ -184,3 +184,4 @@ All SVG — scale to any size. Fork the repo, take the imagery with you.
 [Research](docs/research/) · [Fleet Doctrine](docs/) · [Visual Assets](screenshots/) · [MIT License](LICENSE)
 
 </div>
+![COCAPN Banner](screenshots/cccaa4b0-5d05-4bfc-b32c-e50120af9dd4.jpg)
