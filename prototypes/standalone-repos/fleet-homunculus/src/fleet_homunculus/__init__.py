@@ -1,4 +1,5 @@
-"""Fleet Homunculus — Body image and reflexes for vessels."""
+"""Fleet Homunculus — The fleet's integrated monitoring and reporting system."""
 __version__ = "0.1.0"
-from .core import Homunculus, ReflexArc, PainSignal, BodyState
-__all__ = ["Homunculus", "ReflexArc", "PainSignal", "BodyState"]
+from .core import FleetMonitor, FleetSnapshot
+
+__all__ = ["FleetMonitor", "FleetSnapshot"]

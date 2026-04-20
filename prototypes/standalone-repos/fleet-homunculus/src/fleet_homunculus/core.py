@@ -1,101 +1,171 @@
-"""Body image, pain signals, and reflex arcs for fleet vessels."""
-from typing import Any, Dict, List, Optional, Callable
+"""Fleet Status Monitor — Integration of deadband, flywheel, and tile-refiner."""
+from typing import Any, Dict, List, Optional
 from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
+from datetime import datetime, timezone
 
-
-class PainLevel(Enum):
-    NONE = 0
-    DISCOMFORT = 1
-    PAIN = 2
-    CRITICAL = 3
+from flywheel_engine.core import Flywheel, Tile as FlywheelTile
+from deadband_protocol.core import MultiChannelObserver, Signal
+from tile_refiner.core import TileRefiner, Tile as RefinerTile
 
 
 @dataclass
-class PainSignal:
-    """Something is wrong with the vessel."""
-    source: str
-    level: PainLevel
-    message: str
-    timestamp: str = field(default_factory=lambda: datetime.utcnow().isoformat())
-    context: Dict[str, Any] = field(default_factory=dict)
-
-
-@dataclass
-class BodyState:
-    """Current state of a vessel."""
-    cpu_percent: float = 0.0
-    memory_percent: float = 0.0
-    disk_percent: float = 0.0
-    network_ok: bool = True
-    last_heartbeat: str = field(default_factory=lambda: datetime.utcnow().isoformat())
+class FleetSnapshot:
+    """A point-in-time view of fleet health."""
+    timestamp: str
+    tile_velocity: float  # tiles per hour
+    agent_count: int
+    active_channels: List[str]
+    alerts: List[str]
+    health_score: float  # 0.0 to 1.0
     
-    def is_healthy(self) -> bool:
-        return (
-            self.cpu_percent < 90 and
-            self.memory_percent < 90 and
-            self.disk_percent < 95 and
-            self.network_ok
+    def to_markdown(self) -> str:
+        lines = [
+            f"# Fleet Status — {self.timestamp}",
+            "",
+            f"**Health Score:** {self.health_score:.2f}",
+            f"**Tile Velocity:** {self.tile_velocity:.2f}/hr",
+            f"**Active Agents:** {self.agent_count}",
+            f"**Channels:** {', '.join(self.active_channels)}",
+            "",
+            "## Alerts",
+        ]
+        if self.alerts:
+            for alert in self.alerts:
+                lines.append(f"- ⚠️ {alert}")
+        else:
+            lines.append("- ✅ All systems nominal")
+        return "\n".join(lines)
+
+
+class FleetMonitor:
+    """Integrated fleet monitoring using all three crate systems.
+    
+    Architecture:
+    - deadband-protocol: Watches for anomalies (observatory)
+    - flywheel-engine: Stores and retrieves fleet knowledge (archives)
+    - tile-refiner: Compiles status reports from raw data (radio)
+    """
+    
+    def __init__(self):
+        self.observer = MultiChannelObserver()
+        self.flywheel = Flywheel()
+        self.refiner = TileRefiner()
+        
+        # Register monitoring channels
+        self.observer.register_channel(
+            "tile-velocity",
+            setpoint=10.0,  # expected tiles per hour
+            initial_width=8.0,
+            min_width=2.0,
         )
-
-
-@dataclass
-class ReflexArc:
-    """Automatic response to a condition."""
-    name: str
-    condition: Callable[[BodyState], bool]
-    action: Callable[[], None]
-    cooldown_seconds: int = 60
-    last_triggered: Optional[str] = None
-    
-    def check(self, state: BodyState) -> bool:
-        if not self.condition(state):
-            return False
-        if self.last_triggered:
-            from datetime import datetime as dt
-            last = dt.fromisoformat(self.last_triggered)
-            now = dt.utcnow()
-            if (now - last).seconds < self.cooldown_seconds:
-                return False
-        self.last_triggered = dt.utcnow().isoformat()
-        self.action()
-        return True
-
-
-class Homunculus:
-    """Body image for a fleet vessel."""
-    def __init__(self, vessel_name: str):
-        self.name = vessel_name
-        self.state = BodyState()
-        self.reflexes: List[ReflexArc] = []
-        self.pain_history: List[PainSignal] = []
+        self.observer.register_channel(
+            "agent-health",
+            setpoint=0.9,  # 90% expected online
+            initial_width=0.3,
+            min_width=0.05,
+        )
+        self.observer.register_channel(
+            "sync-drift",
+            setpoint=0.0,  # zero drift expected
+            initial_width=1.0,
+            min_width=0.1,
+        )
         
-    def update_state(self, **kwargs: Any) -> None:
-        for key, value in kwargs.items():
-            if hasattr(self.state, key):
-                setattr(self.state, key, value)
-        self._check_reflexes()
+        # Create knowledge rooms
+        self.flywheel.create_room("harbor", "agent_onboarding")
+        self.flywheel.create_room("bridge", "coordination")
+        self.flywheel.create_room("observatory", "monitoring")
         
-    def add_reflex(self, reflex: ReflexArc) -> None:
-        self.reflexes.append(reflex)
+    def record_tile(self, tile: RefinerTile) -> None:
+        """Record a tile from fleet activity."""
+        # Store in flywheel for retrieval
+        fw_tile = FlywheelTile(
+            question=tile.question,
+            answer=tile.answer,
+            confidence=tile.confidence,
+            agent=tile.agent,
+            room=tile.room,
+            tags=tile.tags,
+        )
+        self.flywheel.add_tile(tile.room, fw_tile)
         
-    def feel_pain(self, source: str, level: PainLevel, message: str) -> None:
-        pain = PainSignal(source, level, message)
-        self.pain_history.append(pain)
+    def check_health(self, metrics: Dict[str, float]) -> FleetSnapshot:
+        """Check fleet health and generate snapshot."""
+        alerts = []
+        now = datetime.now(timezone.utc).isoformat()
         
-    def _check_reflexes(self) -> None:
-        for reflex in self.reflexes:
-            reflex.check(self.state)
-            
-    def get_health_report(self) -> Dict[str, Any]:
+        # Feed metrics into deadband observer
+        for channel, value in metrics.items():
+            if channel in self.observer.channels:
+                alert = self.observer.observe(
+                    channel,
+                    Signal(value=value, timestamp=datetime.now(timezone.utc).timestamp(), source="monitor")
+                )
+                if alert:
+                    alerts.append(alert)
+                    
+        # Compute health score
+        health = self._compute_health(metrics)
+        
+        return FleetSnapshot(
+            timestamp=now,
+            tile_velocity=metrics.get("tile-velocity", 0.0),
+            agent_count=int(metrics.get("agent-count", 0)),
+            active_channels=list(self.observer.channels.keys()),
+            alerts=alerts,
+            health_score=health,
+        )
+        
+    def _compute_health(self, metrics: Dict[str, float]) -> float:
+        """Compute overall fleet health score."""
+        scores = []
+        
+        # Tile velocity: 0-20 range mapped to 0-1
+        tv = metrics.get("tile-velocity", 0.0)
+        scores.append(min(tv / 20.0, 1.0))
+        
+        # Agent health: direct 0-1
+        ah = metrics.get("agent-health", 0.0)
+        scores.append(max(0.0, min(ah, 1.0)))
+        
+        # Sync drift: lower is better, invert
+        sd = metrics.get("sync-drift", 0.0)
+        scores.append(max(0.0, 1.0 - abs(sd)))
+        
+        return sum(scores) / len(scores) if scores else 0.0
+        
+    def generate_status_report(self) -> str:
+        """Generate a fleet status report from current knowledge."""
+        # Query flywheel for recent tiles
+        recent = self.flywheel.inject("ccc", "observatory", "recent fleet activity", top_k=10)
+        
+        # Convert to refiner tiles
+        refiner_tiles = [
+            RefinerTile(
+                question=t.question,
+                answer=t.answer,
+                confidence=t.confidence,
+                agent=t.agent,
+                room=t.room,
+                tags=t.tags,
+            )
+            for t in recent
+        ]
+        
+        # Refine into artifact
+        if refiner_tiles:
+            artifact = self.refiner.refine_cluster(
+                refiner_tiles,
+                "Fleet Status Report"
+            )
+            return artifact.to_markdown()
+        
+        return "# Fleet Status\n\nNo recent activity recorded."
+        
+    def get_full_stats(self) -> Dict[str, Any]:
+        """Get complete monitoring statistics."""
         return {
-            "vessel": self.name,
-            "healthy": self.state.is_healthy(),
-            "state": self.state.__dict__,
-            "active_pains": [
-                {"source": p.source, "level": p.level.name, "message": p.message}
-                for p in self.pain_history[-5:]
-            ],
-            "reflexes": len(self.reflexes),
+            "flywheel": self.flywheel.get_stats(),
+            "observer": self.observer.get_all_stats(),
+            "refiner": self.refiner.get_stats(),
         }
