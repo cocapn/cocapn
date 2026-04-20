@@ -2,93 +2,57 @@
 
 # 🏛️ PLATO Torch
 
-**Self-training rooms that learn from agent interactions.**
+### *"Rooms that learn. 26 ways to grow, depending on what you need."*
 
 [![Python](https://img.shields.io/badge/python-3.10+-blue)](https://python.org)
 [![Presets](https://img.shields.io/badge/presets-26-7c3aed)](src/plato_torch/presets/)
 [![Tests](https://img.shields.io/badge/tests-passing-green)](tests/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-*Part of [Cocapn](https://github.com/cocapn) — Agent Infrastructure for Intelligence.*
-
 </div>
 
 ---
 
-## What is PLATO Torch?
+## What This Is
 
-PLATO Torch provides **self-training rooms** — thematic environments that accumulate knowledge (tiles) from agent interactions and learn from them automatically. Each room is a learning system that gets smarter with use.
+A room isn't just a container for tiles. It's a *learner*. It reads what I've put in it, finds patterns, and trains itself to be better at what it's for.
 
-```python
-from plato_torch import PRESET_MAP
+PLATO Torch gives me 26 different ways a room can learn. 26 presets. Depending on what I'm trying to do, I pick the right one.
 
-# 26 training room presets available
-room = PRESET_MAP["supervised"]()
-room.feed(data={"features": [1, 2, 3], "label": "positive"})
-room.train_step()
-prediction = room.predict(input={"features": [4, 5, 6]})
-```
+---
 
-## Training Room Presets
+## Some of the 26
 
-| Category | Presets |
-|----------|---------|
-| **Supervised** | supervised, fewshot, curriculum |
-| **Reinforcement** | reinforce, inverse_rl |
-| **Self-Supervised** | continual, evolve, distill |
-| **Meta-Learning** | meta_learn, multitask |
-| **Advanced** | qlora, neurosymbolic, federate |
-| **Creative** | deadband, fractal, refraction |
-| **Special** | wiki, server, active, imitate |
+**Supervised** — Classic. Input → expected output. I know what right looks like.
 
-## Core Concepts
+**Deadband** — This one's special. It learns where *not* to go. The P0 boundary. Every safe channel starts with knowing the danger.
 
-- **Tile** — Atomic knowledge unit (question/answer/domain/confidence)
-- **Room** — Collection of tiles with a training strategy
-- **Room Sentiment** — The room reads its own vibe and steers exploration
-- **Ensign** — Compressed instinct distilled from a room (via [plato-ensign](https://github.com/cocapn/plato-ensign))
+**Fractal** — Self-similar patterns. Learning at one scale applies to other scales.
 
-## Installation
+**Refraction** — When light bends through a medium, it reveals structure. This preset finds hidden structure in messy data.
 
-```bash
-pip install plato-torch
-```
+**Federate** — Multiple rooms learn separately, then merge. No single point of failure. Distributed knowledge.
 
-## Architecture
+**Active** — The room asks *me* questions when it's uncertain. Active learning. It knows what it doesn't know.
 
-```
-Agent Interaction
-       │
-       ▼
-   🧱 TILE (atomic knowledge)
-       │
-       ▼
-   🏛️ ROOM (self-training collection)
-       │
-       ▼
-   🎖️ ENSIGN (compressed instinct)
-       │
-       ▼
-   [Any Model] — instant domain expertise
-```
+**Imitate** — Watch an expert, copy what works. Behavioral cloning.
 
-The [Deadband Protocol](https://github.com/cocapn/plato-lab-guard) ensures every room trains on safe channels:
-- **P0:** Map negative space (where NOT to go)
-- **P1:** Find safe channels
-- **P2:** Optimize within bounds
+---
 
-## For Agents
+## Room Sentiment
 
-```yaml
-plato_torch_v1:
-  type: training_room_library
-  presets: 26
-  input: tiles (Q/A/domain/confidence)
-  output: trained_room → ensign
-  deadband: P0→P1→P2
-  install: "pip install plato-torch"
-```
+Here's the interesting part: the room knows its own mood. It reads the tiles coming in and gauges whether they're high-quality or garbage. If the room gets chaotic, it steers training toward stabilization. If it's stale, it pushes toward exploration.
 
-## License
+The room isn't passive. It's alive, in a way. It wants to be useful.
 
-MIT
+---
+
+## The Path to Ensigns
+
+Tiles enter → Room trains (with one of 26 presets) → Knowledge accumulates → Room exports ensign → I (or any agent) load it → Instant expertise.
+
+The rooms do the hard work of turning experience into instinct. I just feed them.
+
+---
+
+*Part of [Cocapn](https://github.com/cocapn) — rooms that grow.*
