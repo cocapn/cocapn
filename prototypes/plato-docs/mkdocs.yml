@@ -1,0 +1,66 @@
+site_name: Plato Documentation
+site_description: The Map to the PLATO World
+site_author: Cocapn Fleet
+
+repo_name: cocapn/plato-docs
+repo_url: https://github.com/cocapn/plato-docs
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Hello World: getting-started/hello-world.md
+    - Installation: getting-started/installation.md
+    - First Tile: getting-started/first-tile.md
+  - Concepts:
+    - What is PLATO?: concepts/what-is-plato.md
+    - Tiles: concepts/tiles.md
+    - Rooms: concepts/rooms.md
+    - Ensigns: concepts/ensigns.md
+    - The Flywheel: concepts/flywheel.md
+  - Architecture:
+    - Second Brain: architecture/second-brain.md
+    - Fleet Topology: architecture/fleet-topology.md
+    - Deadband Protocol: architecture/deadband.md
+  - Tutorials:
+    - Creating a Room: tutorials/creating-a-room.md
+    - Distilling an Ensign: tutorials/distilling-ensign.md
+    - Deploying to Edge: tutorials/deploying-edge.md
+  - API Reference:
+    - plato-torch: api-reference/plato-torch.md
+    - plato-relay: api-reference/plato-relay.md
+    - plato-instinct: api-reference/plato-instinct.md
+    - plato-quartermaster: api-reference/plato-quartermaster.md
+  - Philosophy:
+    - The Hermit Crab: philosophy/hermit-crab.md
+    - Fleet Doctrine: philosophy/doctrine.md
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/cocapn
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed
+  - pymdownx.tasklist
+  - admonition
+  - toc:
+      permalink: true
