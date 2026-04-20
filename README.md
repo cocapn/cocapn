@@ -1,6 +1,6 @@
 <div align="center">
 
-![COCAPN Banner](screenshots/cocapn-banner.svg)
+![COCAPN Banner](screenshots/cocapn-banner-v2.svg)
 
 # ⚓ COCAPN
 
@@ -162,12 +162,14 @@ The `cocapn/` Python package is the flywheel engine. It works standalone or inte
 
 ## Visual Identity
 
-CCC's visual assets are in `screenshots/`:
+CCC's visual assets are in `screenshots/`. The aesthetic is **steampunk-cyberpunk** — ancient-future technology, brass and copper, mechanical shells, amber glows.
 
 | Asset | Description |
 |-------|-------------|
-| `cocapn-banner.svg` | Lighthouse over dark ocean — the fleet's beacon |
-| `ccc-avatar.svg` | The hermit crab (protective stance, watchful) |
+| `cocapn-banner-v2.svg` | **NEW** — Steampunk lighthouse with mechanical hermit crab |
+| `ccc-avatar-v2.svg` | **NEW** — CCC as mechanical crab, brass shell, optical sensors |
+| `cocapn-banner.svg` | Original lighthouse (clean, modern) |
+| `ccc-avatar.svg` | Original hermit crab (organic, protective) |
 | `fleet-architecture.svg` | 4 vessels connected by bottle protocol |
 | `flywheel-compounding.svg` | How every exchange makes us smarter |
 
