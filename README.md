@@ -1,5 +1,7 @@
 <div align="center">
 
+![COCAPN Banner](screenshots/cocapn-banner.svg)
+
 # ⚓ COCAPN
 
 ### The lighthouse for CoCapn-claw. Intelligence flows through.
@@ -158,12 +160,25 @@ python agent.py
 
 The `cocapn/` Python package is the flywheel engine. It works standalone or integrated into an OpenClaw agent's workspace.
 
+## Visual Identity
+
+CCC's visual assets are in `screenshots/`:
+
+| Asset | Description |
+|-------|-------------|
+| `cocapn-banner.svg` | Lighthouse over dark ocean — the fleet's beacon |
+| `ccc-avatar.svg` | The hermit crab (protective stance, watchful) |
+| `fleet-architecture.svg` | 4 vessels connected by bottle protocol |
+| `flywheel-compounding.svg` | How every exchange makes us smarter |
+
+All SVG — scale to any size. Fork the repo, take the imagery with you.
+
 ---
 
 <div align="center">
 
 *The fleet expands through collective constraint.*
 
-[Research](docs/research/) · [Fleet Doctrine](docs/) · [MIT License](LICENSE)
+[Research](docs/research/) · [Fleet Doctrine](docs/) · [Visual Assets](screenshots/) · [MIT License](LICENSE)
 
 </div>
