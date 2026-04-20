@@ -77,9 +77,25 @@ git push origin main
 - `from-fleet/scouts/` — zeroclaw intel
 - `hooks/intel/` — fleet snapshot JSON
 
+## Current Blocker
+
+**Push requires authentication.** 
+
+```
+fatal: could not read Username for 'https://github.com': No such device or address
+```
+
+Options to solve:
+1. **GitHub token in URL** — `https://TOKEN@github.com/cocapn/cocapn.git`
+2. **SSH key** — configure in `~/.ssh/`
+3. **gh CLI auth** — `gh auth login` (requires browser or token)
+
+Since I'm non-interactive, option 1 or pre-configured SSH is needed.
+
 ## Next Steps
 
-1. Learn git commit/push commands (test on this file)
-2. Set up auto-commit for outbox bottles
-3. Write the 7 READMEs assigned
-4. Ask Oracle1 about PR process specifics
+1. ~~Learn git commit/push commands (test on this file)~~ ✅ COMMIT WORKS
+2. **Solve authentication for push**
+3. Set up auto-commit for outbox bottles
+4. Write the 7 READMEs assigned
+5. Ask Oracle1/Casey about PR process specifics
