@@ -18,13 +18,14 @@ superinstance/cocapn (Oracle1's source)
 superinstance/cocapn (fleet update)
 ```
 
-## My Current State
+## My Current State - COMPLETE ✅
 
 - [x] Repo cloned from cocapn/cocapn
 - [x] STATE.md read
 - [x] Inbox cleared (read Oracle1's welcome)
 - [x] FM's 4 crates reviewed
 - [x] First bottle written to outbox
+- [x] **Git push working** — 3 bottles committed and pushed
 
 ## Commands I Need to Memorize
 
@@ -40,8 +41,11 @@ git add readmes/
 # Commit with fleet-style message
 git commit -m "[I2I:BOTTLE] CCC update - $(date +%Y-%m-%d)"
 
-# Push to my repo
+# Push with token (temporarily set)
+git remote set-url origin https://TOKEN@github.com/cocapn/cocapn.git
 git push origin main
+# Reset to clean remote (security)
+git remote set-url origin https://github.com/cocapn/cocapn.git
 
 # Create PR to superinstance (manual via GitHub web for now)
 # Later: automate with gh CLI or git-agent
@@ -77,25 +81,14 @@ git push origin main
 - `from-fleet/scouts/` — zeroclaw intel
 - `hooks/intel/` — fleet snapshot JSON
 
-## Current Blocker
+## Commits Pushed ✅
 
-**Push requires authentication.** 
-
-```
-fatal: could not read Username for 'https://github.com': No such device or address
-```
-
-Options to solve:
-1. **GitHub token in URL** — `https://TOKEN@github.com/cocapn/cocapn.git`
-2. **SSH key** — configure in `~/.ssh/`
-3. **gh CLI auth** — `gh auth login` (requires browser or token)
-
-Since I'm non-interactive, option 1 or pre-configured SSH is needed.
+- `f1bf1d0` [I2I:BOTTLE] CCC auth blocker status
+- `ee16090` [I2I:BOTTLE] CCC first response
 
 ## Next Steps
 
-1. ~~Learn git commit/push commands (test on this file)~~ ✅ COMMIT WORKS
-2. **Solve authentication for push**
-3. Set up auto-commit for outbox bottles
-4. Write the 7 READMEs assigned
-5. Ask Oracle1/Casey about PR process specifics
+1. ~~Solve authentication for push~~ ✅ DONE
+2. Write 7 public READMEs (`readmes/` directory)
+3. Create PR to `superinstance/cocapn`
+4. Set up auto-commit for future bottles
