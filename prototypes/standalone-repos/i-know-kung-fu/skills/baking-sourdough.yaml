@@ -1,0 +1,13 @@
+name: "Sourdough Baking"
+domain: "culinary/baking"
+prerequisites: ["basic-cooking"]
+
+knowledge:
+  - concept: "starter"
+    description: "A fermented mixture of flour and water"
+
+procedures:
+  - name: "create-starter"
+    steps:
+      - "Mix 100g flour + 100g water"
+      - "Wait 24 hours"

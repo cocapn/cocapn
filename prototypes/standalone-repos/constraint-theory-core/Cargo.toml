@@ -1,0 +1,15 @@
+[package]
+name = "constraint-theory-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["CoCapn Fleet <fleet@cocapn.ai>"]
+description = "Geometric constraint engine with zero hallucination guarantees"
+license = "MIT"
+repository = "https://github.com/cocapn/constraint-theory-core"
+
+[dependencies]
+num-traits = "0.2"
+thiserror = "1.0"
+
+[dev-dependencies]
+approx = "0.5"

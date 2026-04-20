@@ -1,0 +1,15 @@
+{
+  "name": "constraint-theory-web",
+  "version": "0.1.0",
+  "description": "Interactive demos for constraint theory",
+  "scripts": {
+    "dev": "wrangler pages dev",
+    "deploy": "wrangler pages deploy"
+  },
+  "dependencies": {
+    "constraint-theory-core": "^0.1.0"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
