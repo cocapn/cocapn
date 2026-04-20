@@ -1,0 +1,78 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- CCC Avatar - The Hermit Crab -->
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="shellGrad" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c73e54;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="eyeGrad" cx="30%" cy="30%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#f9d423;stop-opacity:0.6" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="256" height="256" fill="#1a1a2e" rx="32"/>
+  
+  <!-- Glow effect behind -->
+  <circle cx="128" cy="128" r="100" fill="#0f3460" opacity="0.5" filter="url(#glow)"/>
+  
+  <!-- Crab body (shell) -->
+  <ellipse cx="128" cy="140" rx="70" ry="55" fill="url(#shellGrad)"/>
+  
+  <!-- Shell spiral detail -->
+  <path d="M 128 110 Q 150 125 145 145 Q 140 160 128 155 Q 116 150 118 135 Q 120 120 128 110" 
+        fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+  <path d="M 128 125 Q 138 135 135 145" 
+        fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Eyes on stalks -->
+  <line x1="100" y1="105" x2="95" y2="75" stroke="#e94560" stroke-width="5" stroke-linecap="round"/>
+  <line x1="156" y1="105" x2="161" y2="75" stroke="#e94560" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- Eye bulbs -->
+  <circle cx="95" cy="70" r="18" fill="#e94560"/>
+  <circle cx="161" cy="70" r="18" fill="#e94560"/>
+  
+  <!-- Eye shine -->
+  <circle cx="95" cy="70" r="14" fill="url(#eyeGrad)" filter="url(#glow)"/>
+  <circle cx="161" cy="70" r="14" fill="url(#eyeGrad)" filter="url(#glow)"/>
+  
+  <!-- Pupils (slightly angry/protective look) -->
+  <circle cx="98" cy="70" r="5" fill="#1a1a2e"/>
+  <circle cx="164" cy="70" r="5" fill="#1a1a2e"/>
+  <circle cx="99" cy="68" r="2" fill="#ffffff" opacity="0.8"/>
+  <circle cx="165" cy="68" r="2" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- Claws (raised slightly - protective stance) -->
+  <g transform="translate(45, 130) rotate(-20)">
+    <ellipse cx="0" cy="0" rx="25" ry="35" fill="#e94560" stroke="#c73e54" stroke-width="2"/>
+    <ellipse cx="5" cy="-5" rx="15" ry="20" fill="#ffffff" opacity="0.2"/>
+  </g>
+  <g transform="translate(211, 130) rotate(20)">
+    <ellipse cx="0" cy="0" rx="25" ry="35" fill="#e94560" stroke="#c73e54" stroke-width="2"/>
+    <ellipse cx="-5" cy="-5" rx="15" ry="20" fill="#ffffff" opacity="0.2"/>
+  </g>
+  
+  <!-- Legs (6 visible) -->
+  <path d="M 75 160 L 50 190" stroke="#e94560" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 95 175 L 75 200" stroke="#e94560" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 115 185 L 105 205" stroke="#e94560" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 141 185 L 151 205" stroke="#e94560" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 161 175 L 181 200" stroke="#e94560" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 181 160 L 206 190" stroke="#e94560" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Small antennae -->
+  <path d="M 110 95 Q 105 85 100 80" stroke="#f9d423" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 146 95 Q 151 85 156 80" stroke="#f9d423" stroke-width="2" fill="none" opacity="0.7"/>
+  
+  <!-- CCC identifier -->
+  <text x="128" y="240" font-family="monospace" font-size="14" font-weight="bold" fill="#f9d423" text-anchor="middle" letter-spacing="2">CCC</text>
+</svg>

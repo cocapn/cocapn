@@ -1,0 +1,74 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark ocean background -->
+  <rect width="800" height="400" fill="#1a1a2e"/>
+  
+  <!-- Water gradient -->
+  <defs>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#16213e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Ocean surface -->
+  <ellipse cx="400" cy="350" rx="350" ry="80" fill="url(#waterGrad)" opacity="0.6"/>
+  
+  <!-- Lighthouse base -->
+  <path d="M 370 350 L 370 180 L 430 180 L 430 350 Z" fill="#e94560" stroke="#c73e54" stroke-width="2"/>
+  
+  <!-- Lighthouse stripes -->
+  <rect x="370" y="200" width="60" height="20" fill="#ffffff" opacity="0.9"/>
+  <rect x="370" y="240" width="60" height="20" fill="#ffffff" opacity="0.9"/>
+  <rect x="370" y="280" width="60" height="20" fill="#ffffff" opacity="0.9"/>
+  <rect x="370" y="320" width="60" height="20" fill="#ffffff" opacity="0.9"/>
+  
+  <!-- Lighthouse top -->
+  <path d="M 360 180 L 400 140 L 440 180 Z" fill="#1a1a2e" stroke="#e94560" stroke-width="2"/>
+  <rect x="385" y="140" width="30" height="25" fill="#f9d423" filter="url(#glow)"/>
+  
+  <!-- Light beams -->
+  <path d="M 400 152 L 150 50 L 200 80 Z" fill="#f9d423" opacity="0.3" filter="url(#glow)"/>
+  <path d="M 400 152 L 650 50 L 600 80 Z" fill="#f9d423" opacity="0.3" filter="url(#glow)"/>
+  <path d="M 400 152 L 100 150 L 150 120 Z" fill="#f9d423" opacity="0.2"/>
+  <path d="M 400 152 L 700 150 L 650 120 Z" fill="#f9d423" opacity="0.2"/>
+  
+  <!-- Stars -->
+  <circle cx="100" cy="80" r="1.5" fill="#ffffff" opacity="0.8"/>
+  <circle cx="150" cy="60" r="1" fill="#ffffff" opacity="0.6"/>
+  <circle cx="200" cy="90" r="1.5" fill="#ffffff" opacity="0.7"/>
+  <circle cx="600" cy="70" r="1" fill="#ffffff" opacity="0.6"/>
+  <circle cx="650" cy="100" r="1.5" fill="#ffffff" opacity="0.8"/>
+  <circle cx="700" cy="60" r="1" fill="#ffffff" opacity="0.7"/>
+  <circle cx="750" cy="90" r="1.5" fill="#ffffff" opacity="0.6"/>
+  
+  <!-- Moon -->
+  <circle cx="700" cy="80" r="25" fill="#f9d423" opacity="0.15"/>
+  
+  <!-- Crab silhouette (subtle) -->
+  <g transform="translate(680, 320) scale(0.6)" opacity="0.8">
+    <ellipse cx="50" cy="50" rx="35" ry="25" fill="#e94560"/>
+    <circle cx="35" cy="40" r="8" fill="#e94560"/>
+    <circle cx="65" cy="40" r="8" fill="#e94560"/>
+    <circle cx="35" cy="38" r="3" fill="#1a1a2e"/>
+    <circle cx="65" cy="38" r="3" fill="#1a1a2e"/>
+    <!-- Claws -->
+    <path d="M 15 45 Q 5 35 10 25" stroke="#e94560" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M 85 45 Q 95 35 90 25" stroke="#e94560" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <!-- Legs -->
+    <path d="M 25 65 L 15 80" stroke="#e94560" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 35 70 L 30 85" stroke="#e94560" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 65 70 L 70 85" stroke="#e94560" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 75 65 L 85 80" stroke="#e94560" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="380" font-family="monospace" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="4">COCAPN</text>
+  <text x="400" y="395" font-family="monospace" font-size="12" fill="#f9d423" text-anchor="middle" letter-spacing="2">THE LIGHTHOUSE · INTELLIGENCE FLOWS THROUGH</text>
+</svg>
