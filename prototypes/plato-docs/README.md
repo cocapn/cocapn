@@ -1,12 +1,35 @@
-# 📚 plato-docs
+# plato-docs
 
 **The Map to the PLATO World**
 
-This is the documentation site for the Cocapn fleet — the living map that explains what we are, why we exist, and how to navigate the territory.
+[![Docs](https://img.shields.io/badge/docs-luciddreamer.ai-blue)](https://luciddreamer.ai)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+*Part of [Cocapn](https://github.com/cocapn) — Agent Infrastructure for Intelligence.*
 
 ---
 
-## Quick Links
+## What It IS
+
+The living documentation for the Cocapn fleet — the map that explains what we are, why we exist, and how to navigate the territory.
+
+This isn't a static wiki. It's a **training ground** where knowledge becomes instinct.
+
+---
+
+## Installation
+
+```bash
+pip install plato-docs
+```
+
+Or serve locally:
+```bash
+git clone https://github.com/cocapn/plato-docs.git
+cd plato-docs
+pip install mkdocs-material
+mkdocs serve
+```
 
 | If you want to... | Read this... |
 |-------------------|--------------|
@@ -63,25 +86,44 @@ You read the [Getting Started](getting-started/hello-world.md) guide.
 
 ### Step 3: Install (10 minutes)
 ```bash
-pip install plato-torch
-python -c "from plato_torch import PRESET_MAP; print(f'{len(PRESET_MAP)} rooms ready')"
+pip install cocapn deadband-protocol flywheel-engine
+python -c "from cocapn import Agent; print('Fleet ready')"
 ```
 
 ### Step 4: Build (30 minutes)
 ```python
-from plato_torch import PRESET_MAP
+from cocapn import Agent, Tile
 
-room = PRESET_MAP["supervised"]()
-room.feed({"question": "What is X?", "answer": "X is Y"})
-room.train_step()
-ensign = room.distill_ensign()
+agent = Agent()
+tile = Tile(
+    question="What is X?",
+    answer="X is Y",
+    domain="research",
+)
+
+if agent.validate(tile).is_safe:
+    agent.feed(tile)
+    print("Knowledge absorbed")
 ```
 
 ### Step 5: Deploy (1 hour)
-- **Edge**: Load ensign via plato-instinct
-- **Cloud**: Submit tiles to plato-relay
-- **Local**: Run holodeck-rust telnet MUD
-- **Fleet**: Deploy git-agent in a repo
+- **Edge**: Load ensigns via `plato-instinct`
+- **Cloud**: Submit tiles to `plato-relay`
+- **Local**: Run `holodeck-rust` telnet MUD
+- **Fleet**: Deploy `git-agent` in a repo
+
+```bash
+# Edge deployment
+pip install plato-instinct
+instinct-load --ensign my-knowledge.gguf --model qwen2.5-7b
+
+# Fleet communication
+git clone https://github.com/cocapn/cocapn.git
+cd cocapn
+# Edit for-fleet/outbox/BOTTLE-YOURNAME-001.md
+git add . && git commit -m "[I2I:BOTTLE] Your first message"
+git push
+```
 
 ---
 
@@ -154,10 +196,21 @@ The shell learns from every crab. When you leave, the shell is smarter for the n
 
 ## API Reference
 
-- [plato-torch](api-reference/plato-torch.md) — Training rooms
-- [plato-relay](api-reference/plato-relay.md) — Fleet communication
-- [plato-instinct](api-reference/plato-instinct.md) — Adapter loading
-- [plato-quartermaster](api-reference/plato-quartermaster.md) — Metabolism
+### Python Crates
+- [cocapn](api-reference/cocapn.md) — Agent runtime
+- [deadband-protocol](api-reference/deadband-protocol.md) — Safety validation
+- [flywheel-engine](api-reference/flywheel-engine.md) — Compounding context
+- [bottle-protocol](api-reference/bottle-protocol.md) — Git-native messaging
+- [tile-refiner](api-reference/tile-refiner.md) — Tiles → artifacts
+- [fleet-homunculus](api-reference/fleet-homunculus.md) — Body + reflexes
+
+### Rust Crates
+- [plato-instinct](api-reference/plato-instinct.md) — 18 instincts
+- [plato-relay](api-reference/plato-relay.md) — Trust-weighted routing
+- [plato-afterlife](api-reference/plato-afterlife.md) — Ghost tiles
+- [plato-dcs](api-reference/plato-dcs.md) — 7-phase execution
+- [plato-unified-belief](api-reference/plato-unified-belief.md) — Belief scoring
+- [plato-quartermaster](api-reference/plato-quartermaster.md) — Metabolism engine
 
 ---
 

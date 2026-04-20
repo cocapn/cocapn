@@ -1,14 +1,20 @@
-# 🧭 plato-quartermaster
+# plato-quartermaster
 
 **The Vagus Nerve of the Fleet**
 
-```
-The gut doesn't wait for the brain. 
-It digests, compresses, and signals hunger.
-It knows what the body needs before the cortex does.
-```
+[![PyPI](https://img.shields.io/pypi/v/plato-quartermaster)](https://pypi.org/project/plato-quartermaster/)
+[![Python](https://img.shields.io/badge/python-3.10+-blue)](https://python.org)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-plato-quartermaster is the second brain of a PLATO fleet — the metabolism engine that handles data lifecycle, fleet proprioception, and spinal reflexes without bothering the oracle.
+*Part of [Cocapn](https://github.com/cocapn) — Agent Infrastructure for Intelligence.*
+
+---
+
+## What It IS
+
+The gut doesn't wait for the brain. It digests, compresses, and signals hunger. It knows what the body needs before the cortex does.
+
+plato-quartermaster is the **second brain** of a PLATO fleet — the metabolism engine that handles data lifecycle, fleet proprioception, and spinal reflexes without bothering the oracle.
 
 ---
 
@@ -164,12 +170,12 @@ prediction = pipeline.predict({
 pip install plato-quartermaster
 ```
 
-Or from source:
-
+Development:
 ```bash
 git clone https://github.com/cocapn/plato-quartermaster.git
 cd plato-quartermaster
-pip install -e .
+pip install -e ".[dev]"
+pytest
 ```
 
 ---
