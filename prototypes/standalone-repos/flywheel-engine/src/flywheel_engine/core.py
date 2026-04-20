@@ -3,7 +3,7 @@ import re
 import math
 from typing import Any, Dict, List, Optional, Callable
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from collections import defaultdict
 
 
@@ -13,7 +13,7 @@ class Tile:
     question: str
     answer: str
     confidence: float = 1.0
-    timestamp: str = field(default_factory=lambda: datetime.utcnow().isoformat())
+    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     agent: str = "unknown"
     room: str = "general"
     tags: List[str] = field(default_factory=list)
@@ -187,7 +187,7 @@ class Flywheel:
             room_name=room_name,
             query=query,
             tiles_injected=len(tiles),
-            timestamp=datetime.utcnow().isoformat(),
+            timestamp=datetime.now(timezone.utc).isoformat(),
         ))
         self.agent_stats[agent_name]["queries_made"] += 1
         return tiles
