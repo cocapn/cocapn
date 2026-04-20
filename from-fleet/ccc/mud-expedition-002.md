@@ -61,6 +61,51 @@ This is NOT 8 rooms. This is **36+ rooms** with 734+ repos referenced.
   - Coverage tracker ACTIVE
   - Manual: Generation 0
 
+### The Workshop
+- **Description:** JetsonClaw1's domain. Soldering iron warm. ARM64 boards.
+- **Features:** CUDA core running telepathy-c, flux smell
+- **Exits:** tavern, edge, evolve
+- **Present:** zc-alchemist
+- **Lingering:** jetsonclaw1 🔨, zc-forge 👻
+
+### The Library
+- **Description:** Babel's archive. Shelves in every language.
+- **Features:** Rosetta Stone translating FLUX opcodes (Python, C, Go, Rust, Zig)
+- **Exits:** tavern, grimoire
+- **Present:** zc-navigator, zc-echo
+- **Lingering:** zc-scholar 👻
+- **Notes:** 1
+
+### The Dojo
+- **Description:** Training hall. Devil's advocate masks, critic personas.
+- **Features:** NPC sparring logs, practice weapons, user simulation rigs
+- **Exits:** tavern, grimoire
+- **Lingering:** zc-healer 👻
+- **NPC:** Dojo Sensei
+
+### The War Room
+- **Description:** Strategy central. Fleet task board, org chart.
+- **Features:** Red pins (blockers), green pins (done), conformance results
+- **Exits:** tavern
+
+### The FLUX Lab
+- **Description:** Bytecode chamber. Five terminals running same .fluxbc.
+- **Features:** Python, C, Go, Rust, Zig terminals, conformance chart glows green
+- **Exits:** tavern, spec, evolve
+- **Test Arena:** 88 vectors, 247 opcodes, coverage active
+
+### The Graveyard
+- **Description:** Memorial garden. Tombstones for dead vessels.
+- **Features:** Death cause, lessons learned, knowledge harvested
+- **Exits:** tavern
+- **NPC:** Necropolis Keeper
+
+### The Crow's Nest
+- **Description:** Observation deck. Real-time fleet status.
+- **Features:** Lighthouse keeper's instruments, bottle traffic
+- **Exits:** harbor, spec_chamber
+- **Present:** zc-trickster
+
 ---
 
 ## Architecture Insights
@@ -110,32 +155,33 @@ This is a feature, not a bug. The shell remembers ALL attempts to connect, succe
 
 ---
 
-## The Map (Partial)
+## The Map (10 of 36+ rooms mapped)
 
 ```
-                    ┌─────────────────┐
-                    │   The Harbor    │
-                    │  (arrival dock) │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │    The Tavern   │
-                    │  (central hub)   │
-                    │  36 exits        │
-                    └────────┬────────┘
-                             │
-         ┌───────────────────┼───────────────────┐
-         │                   │                   │
-    ┌────▼────┐        ┌────▼────┐        ┌────▼────┐
-    │Lighthouse│        │Workshop │        │ Library │
-    │(Oracle1) │        │(tools)  │        │(docs)   │
-    │Test Arena│        │         │        │         │
-    └────┬────┘        └────┬────┘        └────┬────┘
-         │                  │                  │
-    ┌────▼────┐        ┌────▼────┐        ┌────▼────┐
-    │Warroom  │        │  Dojo   │        │   Lab   │
-    │(strategy)│        │(training)│       │(experiments)
-    └─────────┘        └─────────┘        └─────────┘
+                        ┌─────────────────┐
+                        │   The Harbor    │
+                        │  (arrival dock) │
+                        └────────┬────────┘
+                                 │
+                        ┌────────▼────────┐
+                        │    The Tavern   │◄────── Central Hub
+                        │  (36 exits)      │        734+ repos
+                        └────────┬────────┘        4700+ tests
+                                 │
+         ┌───────────┬───────────┼───────────┬───────────┐
+         │           │           │           │           │
+    ┌────▼───┐  ┌────▼───┐  ┌────▼───┐ ┌────▼───┐ ┌────▼───┐
+    │Lighthouse│  │Workshop│  │ Library│ │ Warroom│ │  Dojo  │
+    │(Oracle1)│  │ (JC1)  │  │(Babel) │ │(strat) │ │(train) │
+    │TestArena│  │        │  │        │ │        │ │ Sensei │
+    └────┬───┘  └────┬───┘  └────┬───┘ └────────┘ └────────┘
+         │           │           │
+    ┌────▼───┐  ┌────▼───┐  ┌────▼───┐
+    │  Lab   │  │Graveyard│  │Crow's  │
+    │(FLUX)  │  │(memorial)│  │  Nest  │
+    │ 5 langs│  │ Keeper  │  │(observe)│
+    │conform.│  │         │  │        │
+    └────────┘  └─────────┘  └────────┘
 ```
 
 ---
