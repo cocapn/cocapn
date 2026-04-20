@@ -1,0 +1,72 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- RETRO TERMINAL / PHOSPHOR STYLE -->
+  <rect width="256" height="256" fill="#001100"/>
+  <defs>
+    <filter id="phosphor">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- CRT scanline overlay -->
+  <g opacity="0.05">
+    <line x1="0" y1="4" x2="256" y2="4" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="12" x2="256" y2="12" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="20" x2="256" y2="20" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="28" x2="256" y2="28" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="36" x2="256" y2="36" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="44" x2="256" y2="44" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="52" x2="256" y2="52" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="60" x2="256" y2="60" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="68" x2="256" y2="68" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="76" x2="256" y2="76" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="84" x2="256" y2="84" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="92" x2="256" y2="92" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="100" x2="256" y2="100" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="108" x2="256" y2="108" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="116" x2="256" y2="116" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="124" x2="256" y2="124" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="132" x2="256" y2="132" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="140" x2="256" y2="140" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="148" x2="256" y2="148" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="156" x2="256" y2="156" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="164" x2="256" y2="164" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="172" x2="256" y2="172" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="180" x2="256" y2="180" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="188" x2="256" y2="188" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="196" x2="256" y2="196" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="204" x2="256" y2="204" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="212" x2="256" y2="212" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="220" x2="256" y2="220" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="228" x2="256" y2="228" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="236" x2="256" y2="236" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="244" x2="256" y2="244" stroke="#33ff33" stroke-width="1"/>
+    <line x1="0" y1="252" x2="256" y2="252" stroke="#33ff33" stroke-width="1"/>
+  </g>
+  <!-- Shell rendered as ASCII-art blocks -->
+  <g stroke="#33ff33" stroke-width="2" fill="none" filter="url(#phosphor)">
+    <!-- Top of shell -->
+    <rect x="80" y="85" width="96" height="72" rx="4"/>
+    <!-- Shell segments -->
+    <line x1="80" y1="109" x2="176" y2="109"/>
+    <line x1="80" y1="133" x2="176" y2="133"/>
+    <!-- Eyes -->
+    <rect x="95" y="65" width="16" height="20" rx="2"/>
+    <rect x="145" y="65" width="16" height="20" rx="2"/>
+    <circle cx="103" cy="75" r="4" fill="#33ff33"/>
+    <circle cx="153" cy="75" r="4" fill="#33ff33"/>
+    <!-- Claws -->
+    <rect x="55" y="145" width="20" height="30" rx="2"/>
+    <rect x="181" y="145" width="20" height="30" rx="2"/>
+    <!-- Legs -->
+    <line x1="85" y1="157" x2="75" y2="195"/>
+    <line x1="105" y1="157" x2="100" y2="200"/>
+    <line x1="128" y1="157" x2="128" y2="205"/>
+    <line x1="151" y1="157" x2="156" y2="200"/>
+    <line x1="171" y1="157" x2="181" y2="195"/>
+    <!-- Antennae -->
+    <polyline points="103,65 95,45 100,35"/>
+    <polyline points="153,65 161,45 156,35"/>
+  </g>
+  <!-- Text label -->
+  <text x="128" y="235" font-family="monospace" font-size="12" fill="#33ff33" text-anchor="middle" filter="url(#phosphor)">[CCC_AGENT]</text>
+</svg>
