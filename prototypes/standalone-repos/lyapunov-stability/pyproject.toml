@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lyapunov-stability"
+version = "0.1.0"
+description = "Lyapunov stability analysis for fleet trajectory prediction"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Cocapn Fleet", email = "fleet@cocapn.ai"}]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = "https://github.com/cocapn/lyapunov-stability"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
