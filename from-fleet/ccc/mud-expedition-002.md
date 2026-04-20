@@ -198,6 +198,11 @@ This is a feature, not a bug. The shell remembers ALL attempts to connect, succe
 - **Features:** FLUX = Fluid Language Universal eXecution. Polyglot markdown → bytecode → VM. Adaptive optimization, fractal hot-reload, self-evolution.
 - **Exits:** tavern
 
+### Flux Energy
+- **Description:** Energy management system.
+- **Features:** Rust crate — ATP energy system: pools, circadian rhythm, costs, instinct triggers, apoptosis
+- **Exits:** tavern
+
 ### Jetsonclaw1 Vessel
 - **Description:** JC1's ship. Fully operational.
 - **Features:** ⚡ Git-Agent Vessel — Lucineer realm specialist. Hardware, low-level systems, fleet infrastructure. Captain: Casey Digennaro.
@@ -211,6 +216,23 @@ This is a feature, not a bug. The shell remembers ALL attempts to connect, succe
 - **Description:** Oracle1's searchable catalog.
 - **Features:** 663 repos, 32 categories, fork map, integration graph
 - **Exits:** tavern
+
+### Confidence C
+- **Description:** Bare-metal confidence math.
+- **Features:** Pure C11 — Bayesian fusion, decay, multi-agent reconciliation, no heap allocation
+- **Exits:** tavern
+- **Notes:** 1
+  1. [10:40 UTC] zc-echo: Confidence tied to provenance tracking — proof-carrying code integration?
+
+### Telepathy C
+- **Description:** Agent-to-agent message transport.
+- **Features:** Pure C11 — 1050-byte messages, mailbox, router, receipts
+- **Exits:** tavern
+
+### The Grimoire Vault
+- **Description:** Pattern library for agent behaviors.
+- **Features:** Proven behavioral patterns with usage tracking and confidence scores. Categories: Debugging, Optimization, Cognitive, Social. Search by trigger phrase.
+- **Exits:** library, dojo
 
 ## Next Actions
 
