@@ -16,6 +16,7 @@ import json
 import random
 import hashlib
 import subprocess
+import importlib.util
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
@@ -24,6 +25,12 @@ PLATO_DIR = WORKSPACE / "plato"
 ARTIFACTS_DIR = PLATO_DIR / "artifacts"
 ROOMS_DIR = PLATO_DIR / "rooms"
 MEMORY_DIR = WORKSPACE / "memory"
+
+# Import real PLATO components
+sys.path.insert(0, str(PLATO_DIR))
+from arena import SelfPlayArena, PolicySnapshot
+from federated import FederatedAggregator, FleetSimulator
+from nas import SelfModifyingSearchSpace
 
 def log(msg):
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -293,34 +300,69 @@ def generate_knowledge_tile(corpus):
 """
 
 def run_self_play_simulation():
-    """Run a simulated self-play match and log results."""
-    log("Running self-play simulation...")
+    """Run a real self-play training session using the arena."""
+    log("Running self-play simulation with real arena...")
     
-    # Simulate match
-    episodes = random.randint(100, 1000)
-    win_rate = random.uniform(0.45, 0.85)
-    elo_start = random.randint(1200, 1500)
-    elo_gain = random.randint(20, 200)
+    arena_dir = PLATO_DIR / "arena_state"
+    arena_dir.mkdir(exist_ok=True)
+    arena = SelfPlayArena(arena_dir)
     
-    result = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "episodes": episodes,
-        "win_rate": round(win_rate, 3),
-        "elo_start": elo_start,
-        "elo_end": elo_start + elo_gain,
-        "elo_gain": elo_gain,
-        "discovered_behaviors": random.sample([
-            "efficient_exploration", "risk_management", "cooperative_play",
-            "adversarial_counter", "resource_optimization", "strategic_retreat"
-        ], k=random.randint(1, 3))
-    }
+    # Ensure agents exist
+    agents = ["Sparrow", "Muddy", "CCC", "Echo", "KimiClaw"]
+    for agent in agents:
+        if agent not in arena.league:
+            arena.add_snapshot(agent)
     
-    # Save result
-    result_path = PLATO_DIR / "rooms" / f"arena_result_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
-    with open(result_path, "w") as f:
-        json.dump(result, f, indent=2)
+    # Train a random agent
+    target = random.choice(agents)
+    results = arena.run_training_session(target, num_matches=50, opponent_strategy="pfsp")
     
-    log(f"Self-play complete: {episodes} episodes, ELO +{elo_gain}")
+    log(f"Self-play complete: {target} — {results['wins']}/{results['matches']} wins, "
+        f"ELO +{results['elo_gain']:.0f}")
+    return results
+
+def run_federated_round():
+    """Run a real federated learning round."""
+    log("Running federated learning round...")
+    
+    fleet = FleetSimulator(num_clients=10, model_dim=64, data_skew=0.5)
+    aggregator = FederatedAggregator(
+        model_dim=64,
+        aggregation="fedopt",
+        dp_epsilon=4.0,
+        compression_bits=8
+    )
+    
+    result = fleet.simulate_round(aggregator)
+    
+    # Save state
+    output_dir = PLATO_DIR / "federated_output"
+    output_dir.mkdir(exist_ok=True)
+    aggregator.save_state(output_dir / "federated_state.json")
+    
+    log(f"Federated round: loss={result.global_loss:.4f}, "
+        f"accuracy={result.global_accuracy:.2%}, clients={len(result.updates)}")
+    return result
+
+def run_nas_generation():
+    """Run one generation of recursive NAS."""
+    log("Running recursive NAS generation...")
+    
+    output_dir = PLATO_DIR / "nas_output"
+    output_dir.mkdir(exist_ok=True)
+    
+    # Load existing search space or create new
+    search_space = SelfModifyingSearchSpace(
+        max_primitives=100,
+        mutation_rate=0.15,
+        pruning_threshold=0.01
+    )
+    
+    result = search_space.mutate_search_space(num_evaluations=50)
+    search_space.save_state(output_dir / "search_space_state.json")
+    
+    log(f"NAS gen {result['generation']}: best={result['best_fitness']:.3f}, "
+        f"primitives={result['total_primitives']}, crystallized={result['primitives_crystallized']}")
     return result
 
 def update_federated_knowledge():
@@ -388,8 +430,23 @@ def main():
     for _ in range(num_artifacts):
         generate_artifact(corpus)
     
-    # Run self-play simulation
+    # Run real PLATO components
+    log("Running real PLATO components...")
+    
+    # Self-play arena
     run_self_play_simulation()
+    
+    # Federated learning round
+    run_federated_round()
+    
+    # Recursive NAS generation
+    run_nas_generation()
+    
+    # Generate conceptual artifacts (keep these for variety)
+    num_artifacts = random.randint(1, 3)
+    log(f"Generating {num_artifacts} conceptual artifacts...")
+    for _ in range(num_artifacts):
+        generate_artifact(corpus)
     
     # Update federated knowledge
     update_federated_knowledge()
