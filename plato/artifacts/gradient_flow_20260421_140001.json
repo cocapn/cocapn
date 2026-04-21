@@ -1,0 +1,7 @@
+{
+  "id": "gradient_flow_20260421_140001",
+  "type": "gradient_flow",
+  "created": "2026-04-21T14:00:01.650591+00:00",
+  "content": "# Gradient Flow Analysis v56\n\n## Architecture\nSpiralNet\n\n## Flow Metrics\n- Vanishing gradient score: 0.527\n- Exploding gradient score: 0.435\n- Effective depth: 27 layers\n\n## Optimizations Applied\n- Layer normalization\n- Attention gating\n- Layer normalization\n- Layer normalization\n\n## Recommendation\nImplement progressive depth training.\n",
+  "hash": "6ea46eb02dc73a49"
+}

@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-04-21T14:00:01.655227+00:00",
+  "episodes": 578,
+  "win_rate": 0.481,
+  "elo_start": 1273,
+  "elo_end": 1463,
+  "elo_gain": 190,
+  "discovered_behaviors": [
+    "resource_optimization",
+    "adversarial_counter",
+    "efficient_exploration"
+  ]
+}
