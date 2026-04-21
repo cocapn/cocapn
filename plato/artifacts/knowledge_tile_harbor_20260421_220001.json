@@ -1,0 +1,16 @@
+{
+  "id": "knowledge_tile_harbor_20260421_220001",
+  "type": "knowledge_tile",
+  "room": "harbor",
+  "agents_present": [
+    "CCC"
+  ],
+  "objects": [
+    "shell_collection",
+    "model_artifacts",
+    "tide_pool",
+    "ccc_shell"
+  ],
+  "content": "Discovered in The Harbor: A crumbling stone harbor filled with salt-crusted crab shells. Each shell is a discarded ML experime...",
+  "timestamp": "2026-04-21T22:00:01.986876+00:00"
+}
