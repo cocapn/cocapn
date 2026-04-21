@@ -1,0 +1,7 @@
+{
+  "id": "recursive_meta_rule_20260421_155146",
+  "type": "recursive_meta_rule",
+  "created": "2026-04-21T15:51:46.973079+00:00",
+  "content": "# Meta-Rule: Multi-Agent Coordination v85\n\n## Trigger Condition\n```\nIF fleet_insight_score > 0.75\nAND tile_novelty > 0.57\nTHEN activate_meta_rule()\n```\n\n## Action\n1. Spawn 8 automated workers\n2. Explore high-uncertainty regions\n3. Generate 11 new tiles\n\n## Expected Outcome\n- 17.5% improvement in knowledge coverage\n",
+  "hash": "fd80cbafb48fb8e0"
+}
