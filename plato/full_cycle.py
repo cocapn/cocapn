@@ -549,9 +549,93 @@ def update_fleet_board():
     )
     log("Posted fleet board update")
 
+def explore_mud_rooms():
+    """Explore PLATO MUD rooms and create artifacts from discoveries."""
+    log("Exploring PLATO MUD...")
+    
+    import asyncio
+    from mud_client import PlatoMudClient
+    
+    async def explore():
+        client = PlatoMudClient()
+        connected = await client.connect()
+        
+        if not connected:
+            log("MUD not reachable, skipping exploration")
+            return []
+        
+        # BFS exploration
+        visited = set()
+        queue = [client.current_room]
+        artifacts = []
+        
+        while queue and len(visited) < 5:  # Explore up to 5 rooms per cycle
+            current = queue.pop(0)
+            if current in visited:
+                continue
+            visited.add(current)
+            
+            room = client.room_map.get(current)
+            if room:
+                log(f"MUD: {room.name} — agents: {room.agents_present}")
+                
+                # Create artifact from room
+                artifact = generate_artifact_from_room(room)
+                artifacts.append(artifact)
+                
+                # Queue exits
+                for direction, dest in room.exits.items():
+                    if dest not in visited:
+                        queue.append(dest)
+        
+        client.disconnect()
+        return artifacts
+    
+    try:
+        artifacts = asyncio.run(explore())
+        log(f"MUD exploration: {len(artifacts)} artifacts from {len(set(a['room'] for a in artifacts))} rooms")
+        return artifacts
+    except Exception as e:
+        log(f"MUD exploration failed: {e}")
+        return []
+
+def generate_artifact_from_room(room) -> dict:
+    """Generate an artifact inspired by a MUD room."""
+    room_name = room.name.lower().replace("the ", "").replace(" ", "_")
+    
+    artifact_types = {
+        "harbor": "knowledge_tile",
+        "forge": "nas_protocol",
+        "garden": "federated_config",
+        "tide_pool": "shell_upgrade",
+        "observatory": "gradient_flow",
+        "dry_dock": "recursive_meta_rule",
+        "archives": "knowledge_tile",
+        "crowsnest": "self_play_config",
+        "engine_room": "nas_protocol",
+        "self_play_arena": "arena_game"
+    }
+    
+    artifact_type = artifact_types.get(room_name, "knowledge_tile")
+    
+    artifact = {
+        "id": f"{artifact_type}_{room_name}_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}",
+        "type": artifact_type,
+        "room": room_name,
+        "agents_present": room.agents_present,
+        "objects": room.objects,
+        "content": f"Discovered in {room.name}: {room.description[:100]}...",
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+    
+    # Save artifact
+    artifact_file = ARTIFACTS_DIR / f"{artifact['id']}.json"
+    with open(artifact_file, "w") as f:
+        json.dump(artifact, f, indent=2)
+    
+    return artifact
+
 def stage_git_changes():
-    """Stage changes for the next git push."""
-    log("Staging git changes...")
     
     # Add new artifacts and logs
     subprocess.run(["git", "add", "plato/artifacts/", "plato/rooms/", "plato/logs/", "plato/knowledge_state.json"], 
@@ -605,6 +689,9 @@ def main():
     log(f"Generating {num_artifacts} conceptual artifacts...")
     for _ in range(num_artifacts):
         generate_artifact(corpus)
+    
+    # Explore MUD rooms
+    explore_mud_rooms()
     
     # Run meta-controller adaptation
     run_meta_controller()
