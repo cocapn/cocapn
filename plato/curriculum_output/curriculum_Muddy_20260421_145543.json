@@ -1,0 +1,102 @@
+{
+  "advance_threshold": 0.7,
+  "consecutive_required": 3,
+  "global_episode_count": 10,
+  "agents": {
+    "Muddy": {
+      "current_room": "GARDEN",
+      "current_stage": "NAVIGATION",
+      "skills": [
+        0.5132386601127231,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "episode_history": [
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 8,
+          "timestamp": 1776783343.5375006
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 7,
+          "timestamp": 1776783343.5378144
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 12,
+          "timestamp": 1776783343.537903
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 10,
+          "timestamp": 1776783343.5379517
+        },
+        {
+          "room": "FORGE",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 11,
+          "timestamp": 1776783343.538043
+        },
+        {
+          "room": "FORGE",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 5,
+          "timestamp": 1776783343.5380862
+        },
+        {
+          "room": "FORGE",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 6,
+          "timestamp": 1776783343.5381424
+        },
+        {
+          "room": "GARDEN",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 15,
+          "timestamp": 1776783343.5383859
+        },
+        {
+          "room": "GARDEN",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 9,
+          "timestamp": 1776783343.5384254
+        },
+        {
+          "room": "GARDEN",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 8,
+          "timestamp": 1776783343.538461
+        }
+      ],
+      "advance_threshold": 0.7,
+      "consecutive_required": 3
+    }
+  }
+}

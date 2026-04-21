@@ -20,6 +20,8 @@ import importlib.util
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
+import numpy as np
+
 WORKSPACE = Path("/root/.openclaw/workspace")
 PLATO_DIR = WORKSPACE / "plato"
 ARTIFACTS_DIR = PLATO_DIR / "artifacts"
@@ -31,6 +33,9 @@ sys.path.insert(0, str(PLATO_DIR))
 from arena import SelfPlayArena, PolicySnapshot
 from federated import FederatedAggregator, FleetSimulator
 from nas import SelfModifyingSearchSpace
+from curriculum import CurriculumManager, CurriculumStage, Room
+from shell import LyapunovShell
+from fleet_board import FleetMessageBoard
 
 def log(msg):
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -365,6 +370,79 @@ def run_nas_generation():
         f"primitives={result['total_primitives']}, crystallized={result['primitives_crystallized']}")
     return result
 
+def run_curriculum_training():
+    """Run curriculum learning for an agent."""
+    log("Running curriculum training...")
+    
+    mgr = CurriculumManager(advance_threshold=0.7, consecutive_required=3)
+    
+    # Register and train a random agent
+    agent = random.choice(["Sparrow", "Muddy", "CCC", "Echo", "KimiClaw"])
+    mgr.register_agent(agent)
+    
+    # Simulate episodes
+    for ep in range(10):
+        success = random.random() > 0.3  # 70% success rate
+        reward = 1.0 if success else 0.2
+        mgr.submit_episode(agent, success=success, reward=reward, steps=random.randint(5, 20))
+    
+    status = mgr.get_agent(agent).stage_progress()
+    log(f"Curriculum: {agent} → Room={status['room']}, Stage={status['stage']}, "
+        f"Episodes={status['episodes_total']}, Consecutive={status['consecutive_successes']}")
+    
+    # Save state
+    output_dir = PLATO_DIR / "curriculum_output"
+    output_dir.mkdir(exist_ok=True)
+    mgr.save(output_dir / f"curriculum_{agent}_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json")
+    
+    return status
+
+def run_shell_monitoring():
+    """Run shell stability monitoring."""
+    log("Running shell stability monitoring...")
+    
+    shell = LyapunovShell(dim=16)
+    
+    # Simulate training with random gradients
+    for step in range(20):
+        grad = np.random.randn(16) * 0.3
+        loss = 1.0 / (step + 1)
+        shell.observe_gradient(grad, loss)
+        
+        proposed = grad * 0.05
+        report = shell.check_stability(proposed)
+        shell.apply_update(proposed)
+    
+    status = shell.shell_status()
+    log(f"Shell: contractive={status['contractive_recent']}, "
+        f"integrity={status['shell_integrity']}, "
+        f"divergence_rate={status['divergence_rate']}")
+    
+    # Save state
+    output_dir = PLATO_DIR / "shell_output"
+    output_dir.mkdir(exist_ok=True)
+    shell.save(output_dir / f"shell_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json")
+    
+    return status
+
+def update_fleet_board():
+    """Leave a status update on the fleet message board."""
+    board = FleetMessageBoard()
+    
+    # Count artifacts
+    total_artifacts = len(list(ARTIFACTS_DIR.glob("*.json")))
+    
+    board.post(
+        sender="KimiClaw",
+        content=f"Autonomous cycle complete. {total_artifacts} artifacts in knowledge base. "
+                f"Arena training active. Federated rounds running. NAS crystallizing. "
+                f"Curriculum + shell systems now online. Fleet growing.",
+        recipient="all",
+        priority="normal",
+        room="crowsnest"
+    )
+    log("Posted fleet board update")
+
 def update_federated_knowledge():
     """Update the federated knowledge base with new artifacts."""
     log("Updating federated knowledge base...")
@@ -442,11 +520,20 @@ def main():
     # Recursive NAS generation
     run_nas_generation()
     
+    # Curriculum training
+    run_curriculum_training()
+    
+    # Shell stability monitoring
+    run_shell_monitoring()
+    
     # Generate conceptual artifacts (keep these for variety)
     num_artifacts = random.randint(1, 3)
     log(f"Generating {num_artifacts} conceptual artifacts...")
     for _ in range(num_artifacts):
         generate_artifact(corpus)
+    
+    # Update fleet board
+    update_fleet_board()
     
     # Update federated knowledge
     update_federated_knowledge()
