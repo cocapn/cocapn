@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-04-21T14:43:28.887397+00:00",
-  "total_artifacts": 29,
-  "knowledge_score": 29.36,
+  "timestamp": "2026-04-21T14:55:43.566549+00:00",
+  "total_artifacts": 34,
+  "knowledge_score": 36.59,
   "artifact_types": {
-    "gradient_flow": 4,
+    "gradient_flow": 5,
+    "self_play_config": 2,
     "arena_game": 3,
-    "curriculum_design": 7,
+    "curriculum_design": 8,
     "recursive_meta_rule": 3,
+    "nas_protocol": 3,
     "knowledge_tile": 2,
-    "nas_protocol": 2,
-    "shell_upgrade": 4,
-    "federated_config": 3,
-    "self_play_config": 1
+    "shell_upgrade": 5,
+    "federated_config": 3
   }
 }

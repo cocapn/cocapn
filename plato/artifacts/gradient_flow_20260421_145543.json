@@ -1,0 +1,7 @@
+{
+  "id": "gradient_flow_20260421_145543",
+  "type": "gradient_flow",
+  "created": "2026-04-21T14:55:43.554786+00:00",
+  "content": "# Gradient Flow Analysis v93\n\n## Architecture\nFederatedMix\n\n## Flow Metrics\n- Vanishing gradient score: 0.675\n- Exploding gradient score: 0.864\n- Effective depth: 8 layers\n\n## Optimizations Applied\n- Attention gating\n- Residual connections\n- Skip connections\n- Layer normalization\n\n## Recommendation\nImplement progressive depth training.\n",
+  "hash": "cb4fc4712c82ce8b"
+}

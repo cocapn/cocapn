@@ -1,0 +1,7 @@
+{
+  "id": "shell_upgrade_20260421_145543",
+  "type": "shell_upgrade",
+  "created": "2026-04-21T14:55:43.422864+00:00",
+  "content": "# Shell Upgrade: Attention Focus v4\n\n## Description\nA support system for collaborative learning.\n\n## Mechanics\n- Activation cost: 0.22 gradient units\n- Duration: 12 steps\n- Cooldown: 14 steps\n\n## Effects\n- Speed: +45.8%\n- Risk: unchanged\n",
+  "hash": "75628d685ad5c5c4"
+}

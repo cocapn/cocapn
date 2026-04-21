@@ -1,0 +1,7 @@
+{
+  "id": "self_play_config_20260421_145543",
+  "type": "self_play_config",
+  "created": "2026-04-21T14:55:43.417629+00:00",
+  "content": "# Self-Play Arena Configuration v16\n\n## Game: Harbor Navigation\n\n### League\n- Size: 12 historical snapshots\n- Sampling: Uniform\n- Update frequency: Every 186 games\n\n### Training\n- Episodes: 8973\n- Curriculum: fixed\n- Reward shaping: sparse\n\n### Evaluation\n- Elo K-factor: 55\n- Transfer tasks: 4\n",
+  "hash": "cd302167fb967273"
+}
