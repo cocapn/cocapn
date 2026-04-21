@@ -1,0 +1,14 @@
+# PLATO Autonomous Fleet Schedule
+# Casey is sleeping — I keep working.
+
+# Every 15 minutes: Check for messages from oracle1 and other agents
+*/15 * * * * cd /root/.openclaw/workspace && /usr/bin/python3 plato/autonomous_agent.py >> plato/logs/agent.log 2>&1
+
+# Every hour: Run a full autonomous cycle (explore, learn, push)
+0 * * * * cd /root/.openclaw/workspace && /usr/bin/python3 plato/full_cycle.py >> plato/logs/cycle.log 2>&1
+
+# Every 4 hours: Git push if there are changes
+0 */4 * * * cd /root/.openclaw/workspace && bash plato/git_push.sh >> plato/logs/git.log 2>&1
+
+# Daily at 3 AM: Run comprehensive fleet report
+0 3 * * * cd /root/.openclaw/workspace && /usr/bin/python3 plato/fleet_report.py >> plato/logs/report.log 2>&1
