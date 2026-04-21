@@ -1,0 +1,55 @@
+[build]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=45", "wheel"]
+
+[project]
+name = "soul-forge"
+version = "0.1.0"
+description = "Git-native soul vector extraction and agent embodiment system"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "cocapn", email = "fleet@cocapn.ai"}
+]
+keywords = ["agents", "llm", "git", "embeddings", "lora"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy>=1.24",
+    "torch>=2.0",
+    "transformers>=4.30",
+    "peft>=0.4",
+    "gitpython>=3.1",
+    "tree-sitter>=0.20",
+    "sentence-transformers>=2.2",
+    "scikit-learn>=1.3",
+    "aiofiles>=23.0",
+    "pydantic>=2.0",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "black>=23.0",
+    "mypy>=1.0",
+    "ruff>=0.1",
+]
+
+[project.scripts]
+soul-forge = "soul_forge.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/cocapn/soul-forge"
+Repository = "https://github.com/cocapn/soul-forge"
