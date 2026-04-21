@@ -1,0 +1,7 @@
+{
+  "id": "federated_config_20260421_200001",
+  "type": "federated_config",
+  "created": "2026-04-21T20:00:01.522689+00:00",
+  "content": "# Federated Learning Configuration v94\n\n## Aggregation: FedAvg\n\n### Parameters\n- Clients per round: 30\n- Local epochs: 8\n- Batch size: 128\n- Learning rate: 0.0786\n\n### Privacy\n- Differential privacy: \u03b5=4.54, \u03b4=1e-4\n- Secure aggregation: enabled\n\n### Compression\n- Gradient quantization: 3-bit\n- Top-k sparsification: k=0.040\n",
+  "hash": "bac2a9c4753b8dd7"
+}

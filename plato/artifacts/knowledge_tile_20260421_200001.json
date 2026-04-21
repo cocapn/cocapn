@@ -1,0 +1,7 @@
+{
+  "id": "knowledge_tile_20260421_200001",
+  "type": "knowledge_tile",
+  "created": "2026-04-21T20:00:01.629943+00:00",
+  "content": "# Knowledge Tile: Self-Play v32\n\n## Insight\nRecursive self-improvement requires careful anchoring to prevent runaway divergence.\n\n## Connection to PLATO\nArtifacts are compressed representations of knowledge that can be transferred between agents.\n\n## Application\nIncorporate into the Codex for automatic retrieval during similar situations.\n",
+  "hash": "14b5928915abcead"
+}
