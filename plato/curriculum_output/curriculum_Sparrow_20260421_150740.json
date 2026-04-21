@@ -1,0 +1,102 @@
+{
+  "advance_threshold": 0.7,
+  "consecutive_required": 3,
+  "global_episode_count": 10,
+  "agents": {
+    "Sparrow": {
+      "current_room": "FORGE",
+      "current_stage": "NAVIGATION",
+      "skills": [
+        0.4104161824626593,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "episode_history": [
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 6,
+          "timestamp": 1776784060.3899686
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 6,
+          "timestamp": 1776784060.3901699
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 5,
+          "timestamp": 1776784060.3902323
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 12,
+          "timestamp": 1776784060.3907628
+        },
+        {
+          "room": "FORGE",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 6,
+          "timestamp": 1776784060.3909833
+        },
+        {
+          "room": "FORGE",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 20,
+          "timestamp": 1776784060.3910549
+        },
+        {
+          "room": "FORGE",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 7,
+          "timestamp": 1776784060.3910973
+        },
+        {
+          "room": "FORGE",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 6,
+          "timestamp": 1776784060.3911345
+        },
+        {
+          "room": "FORGE",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 11,
+          "timestamp": 1776784060.3911703
+        },
+        {
+          "room": "FORGE",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 12,
+          "timestamp": 1776784060.3912055
+        }
+      ],
+      "advance_threshold": 0.7,
+      "consecutive_required": 3
+    }
+  }
+}

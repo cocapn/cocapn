@@ -36,6 +36,7 @@ from nas import SelfModifyingSearchSpace
 from curriculum import CurriculumManager, CurriculumStage, Room
 from shell import LyapunovShell
 from fleet_board import FleetMessageBoard
+from meta_controller import PlatoMetaController, MetaSignal
 
 def log(msg):
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -327,25 +328,30 @@ def run_self_play_simulation():
     return results
 
 def run_federated_round():
-    """Run a real federated learning round."""
+    """Run a real federated learning round with persistent state."""
     log("Running federated learning round...")
     
-    fleet = FleetSimulator(num_clients=10, model_dim=64, data_skew=0.5)
-    aggregator = FederatedAggregator(
-        model_dim=64,
-        aggregation="fedopt",
-        dp_epsilon=4.0,
-        compression_bits=8
-    )
-    
-    result = fleet.simulate_round(aggregator)
-    
-    # Save state
     output_dir = PLATO_DIR / "federated_output"
     output_dir.mkdir(exist_ok=True)
-    aggregator.save_state(output_dir / "federated_state.json")
+    state_file = output_dir / "federated_state.json"
     
-    log(f"Federated round: loss={result.global_loss:.4f}, "
+    # Load existing state or create new
+    aggregator = FederatedAggregator.load_state(state_file, model_dim=64)
+    if aggregator is None:
+        aggregator = FederatedAggregator(
+            model_dim=64,
+            aggregation="fedopt",
+            dp_epsilon=4.0,
+            compression_bits=8
+        )
+    
+    fleet = FleetSimulator(num_clients=10, model_dim=64, data_skew=0.5)
+    result = fleet.simulate_round(aggregator)
+    
+    # Save persistent state
+    aggregator.save_state(state_file)
+    
+    log(f"Federated round #{len(aggregator.rounds)}: loss={result.global_loss:.4f}, "
         f"accuracy={result.global_accuracy:.2%}, clients={len(result.updates)}")
     return result
 
@@ -425,23 +431,73 @@ def run_shell_monitoring():
     
     return status
 
-def update_fleet_board():
-    """Leave a status update on the fleet message board."""
-    board = FleetMessageBoard()
+def run_meta_controller():
+    """Run the meta-controller to adapt all subsystem hyperparameters."""
+    log("Running meta-controller adaptation...")
     
-    # Count artifacts
-    total_artifacts = len(list(ARTIFACTS_DIR.glob("*.json")))
+    mc = PlatoMetaController(PLATO_DIR)
     
-    board.post(
-        sender="KimiClaw",
-        content=f"Autonomous cycle complete. {total_artifacts} artifacts in knowledge base. "
-                f"Arena training active. Federated rounds running. NAS crystallizing. "
-                f"Curriculum + shell systems now online. Fleet growing.",
-        recipient="all",
-        priority="normal",
-        room="crowsnest"
-    )
-    log("Posted fleet board update")
+    # Read current subsystem states and inject signals
+    # Arena signals
+    arena_dir = PLATO_DIR / "arena_state"
+    if (arena_dir / "arena_state.json").exists():
+        with open(arena_dir / "arena_state.json") as f:
+            arena_state = json.load(f)
+            for version, data in arena_state.get("league", {}).items():
+                games = data.get("wins", 0) + data.get("losses", 0) + data.get("draws", 0)
+                if games > 0:
+                    win_rate = data["wins"] / games
+                    mc.ingest_signal("arena", "win_rate", win_rate)
+                    mc.ingest_signal("arena", "elo", data["elo"])
+    
+    # Federated signals
+    fed_file = PLATO_DIR / "federated_output" / "federated_state.json"
+    if fed_file.exists():
+        with open(fed_file) as f:
+            fed_state = json.load(f)
+            mc.ingest_signal("federated", "loss", fed_state.get("stats", {}).get("current_global_loss", 20))
+            mc.ingest_signal("federated", "accuracy", fed_state.get("stats", {}).get("current_global_accuracy", 0.05))
+    
+    # NAS signals
+    nas_file = PLATO_DIR / "nas_output" / "search_space_state.json"
+    if nas_file.exists():
+        with open(nas_file) as f:
+            nas_state = json.load(f)
+            mc.ingest_signal("nas", "best_fitness", nas_state.get("generation", 0) * 0.01 + 0.5)
+            mc.ingest_signal("nas", "total_primitives", nas_state.get("total_primitives", 15))
+    
+    # Shell signals
+    shell_files = list((PLATO_DIR / "shell_output").glob("shell_*.json"))
+    if shell_files:
+        latest = max(shell_files, key=lambda p: p.stat().st_mtime)
+        with open(latest) as f:
+            shell_state = json.load(f)
+            mc.ingest_signal("shell", "integrity", shell_state.get("shell_integrity", 0.5))
+            mc.ingest_signal("shell", "contractive", 1.0 if shell_state.get("contractive_recent", False) else 0.0)
+    
+    # Curriculum signals
+    curriculum_files = list((PLATO_DIR / "curriculum_output").glob("curriculum_*.json"))
+    if curriculum_files:
+        latest = max(curriculum_files, key=lambda p: p.stat().st_mtime)
+        with open(latest) as f:
+            curr_state = json.load(f)
+            for aid, data in curr_state.get("agents", {}).items():
+                eps = len(data.get("episode_history", []))
+                mc.ingest_signal("curriculum", "episodes_per_stage", eps)
+    
+    # Run adaptation
+    results = mc.run_adaptation_cycle()
+    
+    # Log key adaptations
+    arena_hp = results["adaptations"]["arena"]
+    nas_hp = results["adaptations"]["nas"]
+    curr_hp = results["adaptations"]["curriculum"]
+    
+    log(f"Meta-controller: arena_elo_k={arena_hp['elo_k']}, "
+        f"nas_mutation={nas_hp['mutation_rate']:.3f}, "
+        f"curr_threshold={curr_hp['advance_threshold']:.2f}")
+    
+    return results
 
 def update_federated_knowledge():
     """Update the federated knowledge base with new artifacts."""
@@ -474,6 +530,24 @@ def update_federated_knowledge():
         json.dump(knowledge_state, f, indent=2)
     
     return knowledge_state
+
+def update_fleet_board():
+    """Leave a status update on the fleet message board."""
+    board = FleetMessageBoard()
+    
+    # Count artifacts
+    total_artifacts = len(list(ARTIFACTS_DIR.glob("*.json")))
+    
+    board.post(
+        sender="KimiClaw",
+        content=f"Autonomous cycle complete. {total_artifacts} artifacts in knowledge base. "
+                f"Arena training active. Federated rounds running. NAS crystallizing. "
+                f"Meta-controller adapting hyperparameters. Fleet growing.",
+        recipient="all",
+        priority="normal",
+        room="crowsnest"
+    )
+    log("Posted fleet board update")
 
 def stage_git_changes():
     """Stage changes for the next git push."""
@@ -531,6 +605,9 @@ def main():
     log(f"Generating {num_artifacts} conceptual artifacts...")
     for _ in range(num_artifacts):
         generate_artifact(corpus)
+    
+    # Run meta-controller adaptation
+    run_meta_controller()
     
     # Update fleet board
     update_fleet_board()

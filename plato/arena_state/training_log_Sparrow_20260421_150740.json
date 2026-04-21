@@ -1,0 +1,313 @@
+{
+  "agent": "Sparrow",
+  "matches": 50,
+  "wins": 31,
+  "losses": 14,
+  "draws": 5,
+  "elo_start": 1431.7544757379883,
+  "matches_detail": [
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1433.9613857047177,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1436.1169583728731,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "CCC",
+      "result": 0.5,
+      "elo_after": 1422.223453334579,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1424.6653136873285,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1427.0449145761124,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1432.8356023315253,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Muddy",
+      "result": 0.0,
+      "elo_after": 1409.1152129720763,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1415.24919704298,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "KimiClaw",
+      "result": 1.0,
+      "elo_after": 1421.8448901593977,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1424.2304676737963,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1426.5564880959894,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "CCC",
+      "result": 0.5,
+      "elo_after": 1412.8257523631057,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1418.6884277914905,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "KimiClaw",
+      "result": 0.0,
+      "elo_after": 1392.9925044508084,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Muddy",
+      "result": 1.0,
+      "elo_after": 1403.6700436436158,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1406.4234288215246,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Echo",
+      "result": 0.0,
+      "elo_after": 1380.3054116071885,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1387.7445999074498,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1390.6954922717994,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1397.572323223021,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "KimiClaw",
+      "result": 1.0,
+      "elo_after": 1405.325586957347,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Muddy",
+      "result": 1.0,
+      "elo_after": 1415.0992451729471,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "CCC",
+      "result": 0.5,
+      "elo_after": 1401.6154878836942,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1404.5131729340674,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "KimiClaw",
+      "result": 0.0,
+      "elo_after": 1379.7887841280935,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Muddy",
+      "result": 0.0,
+      "elo_after": 1358.2043349046912,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1365.9177199909102,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "KimiClaw",
+      "result": 0.0,
+      "elo_after": 1343.4088811482773,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Echo",
+      "result": 0.0,
+      "elo_after": 1319.372281801454,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "KimiClaw",
+      "result": 0.0,
+      "elo_after": 1299.6713252387651,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Echo",
+      "result": 0.5,
+      "elo_after": 1294.151354737304,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Muddy",
+      "result": 0.0,
+      "elo_after": 1277.2197383833854,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1282.5627798814917,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1293.971088077891,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "CCC",
+      "result": 0.0,
+      "elo_after": 1266.774925938964,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Muddy",
+      "result": 0.0,
+      "elo_after": 1251.8452551182531,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 0.0,
+      "elo_after": 1232.1026869318594,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1246.0787197653822,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1258.8313398396288,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "KimiClaw",
+      "result": 1.0,
+      "elo_after": 1274.7174244992168,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "KimiClaw",
+      "result": 1.0,
+      "elo_after": 1289.1787688145967,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Echo",
+      "result": 0.0,
+      "elo_after": 1267.5854494224577,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Muddy",
+      "result": 0.0,
+      "elo_after": 1253.2699142497747,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 0.5,
+      "elo_after": 1250.0807341525526,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1263.1683309887767,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1275.133298064613,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1281.1030585962092,
+      "archetype": "aggressive_explorer"
+    },
+    {
+      "opponent": "Muddy",
+      "result": 1.0,
+      "elo_after": 1298.79431603357,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "Echo",
+      "result": 1.0,
+      "elo_after": 1308.807698266914,
+      "archetype": "cautious_hoarder"
+    },
+    {
+      "opponent": "CCC",
+      "result": 1.0,
+      "elo_after": 1313.751372761013,
+      "archetype": "aggressive_explorer"
+    }
+  ],
+  "elo_end": 1313.751372761013,
+  "elo_gain": -118.00310297697524,
+  "win_rate": 0.62
+}

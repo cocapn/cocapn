@@ -222,6 +222,9 @@ class FederatedAggregator:
         state = {
             "global_model": self.global_model.tolist(),
             "aggregation": self.aggregation,
+            "server_m": self.m.tolist(),
+            "server_v": self.v.tolist(),
+            "server_t": self.t,
             "rounds": [
                 {
                     "round_num": r.round_num,
@@ -236,6 +239,40 @@ class FederatedAggregator:
         }
         with open(path, "w") as f:
             json.dump(state, f, indent=2)
+    
+    @classmethod
+    def load_state(cls, path: Path, model_dim: int = 64):
+        """Load federated learning state from disk."""
+        if not path.exists():
+            return None
+        with open(path) as f:
+            state = json.load(f)
+        
+        aggregator = cls(
+            model_dim=model_dim,
+            aggregation=state.get("aggregation", "fedavg"),
+            dp_epsilon=state.get("stats", {}).get("privacy_budget_epsilon", 4.0),
+            compression_bits=state.get("stats", {}).get("gradient_compression_bits", 8)
+        )
+        
+        aggregator.global_model = np.array(state["global_model"], dtype=np.float64)
+        if "server_m" in state:
+            aggregator.m = np.array(state["server_m"], dtype=np.float64)
+        if "server_v" in state:
+            aggregator.v = np.array(state["server_v"], dtype=np.float64)
+        if "server_t" in state:
+            aggregator.t = state["server_t"]
+        
+        # Reconstruct rounds
+        for r in state.get("rounds", []):
+            aggregator.rounds.append(FederatedRound(
+                round_num=r["round_num"],
+                global_loss=r["global_loss"],
+                global_accuracy=r["global_accuracy"],
+                timestamp=r["timestamp"]
+            ))
+        
+        return aggregator
 
 
 class FleetSimulator:

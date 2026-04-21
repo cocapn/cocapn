@@ -1,0 +1,102 @@
+{
+  "advance_threshold": 0.7,
+  "consecutive_required": 3,
+  "global_episode_count": 10,
+  "agents": {
+    "Echo": {
+      "current_room": "HARBOR",
+      "current_stage": "NAVIGATION",
+      "skills": [
+        0.24366800088689144,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "episode_history": [
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 17,
+          "timestamp": 1776784021.3918738
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 6,
+          "timestamp": 1776784021.392083
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 14,
+          "timestamp": 1776784021.392191
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 19,
+          "timestamp": 1776784021.3922403
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 11,
+          "timestamp": 1776784021.392308
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 8,
+          "timestamp": 1776784021.392348
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 18,
+          "timestamp": 1776784021.392388
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": true,
+          "reward": 1.0,
+          "steps": 14,
+          "timestamp": 1776784021.3924303
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 15,
+          "timestamp": 1776784021.3924677
+        },
+        {
+          "room": "HARBOR",
+          "stage": "NAVIGATION",
+          "success": false,
+          "reward": 0.2,
+          "steps": 5,
+          "timestamp": 1776784021.3925023
+        }
+      ],
+      "advance_threshold": 0.7,
+      "consecutive_required": 3
+    }
+  }
+}
