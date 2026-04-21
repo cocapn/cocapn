@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-04-21T09:00:02.078459+00:00",
+  "episodes": 392,
+  "win_rate": 0.723,
+  "elo_start": 1265,
+  "elo_end": 1452,
+  "elo_gain": 187,
+  "discovered_behaviors": [
+    "adversarial_counter"
+  ]
+}
