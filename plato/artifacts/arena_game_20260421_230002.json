@@ -1,0 +1,7 @@
+{
+  "id": "arena_game_20260421_230002",
+  "type": "arena_game",
+  "created": "2026-04-21T23:00:02.414675+00:00",
+  "content": "# Arena Game: Recursive Combat v95\n\n## Mechanics\n- Players: 4\n- State space: continuous field\n- Observation: full\n\n## Objectives\n1. Collect rare artifacts\n2. Optimize gradient flow\n\n## Curriculum Stages\n- Stage 1: hard\n- Stage 2: easy\n- Stage 3: medium\n- Stage 4: easy\n- Stage 5: easy\n- Stage 6: hard\n",
+  "hash": "7bc4289a1e5f1ed0"
+}
