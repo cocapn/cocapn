@@ -1,0 +1,7 @@
+{
+  "id": "gradient_flow_20260421_150701",
+  "type": "gradient_flow",
+  "created": "2026-04-21T15:07:01.290434+00:00",
+  "content": "# Gradient Flow Analysis v49\n\n## Architecture\nTransformer-12L\n\n## Flow Metrics\n- Vanishing gradient score: 0.776\n- Exploding gradient score: 0.162\n- Effective depth: 43 layers\n\n## Optimizations Applied\n- Gradient clipping\n- Residual connections\n- Gradient clipping\n\n## Recommendation\nUse adaptive gradient clipping per layer.\n",
+  "hash": "b308a4b4d747caed"
+}

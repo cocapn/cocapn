@@ -1,0 +1,7 @@
+{
+  "id": "curriculum_design_20260421_150740",
+  "type": "curriculum_design",
+  "created": "2026-04-21T15:07:40.400993+00:00",
+  "content": "# Curriculum Design: Transfer Learning v14\n\n## Stages\n### Stage 1: Dry-dock\n- Difficulty: 0.32\n- Focus: navigation\n- Success threshold: 0.54\n### Stage 2: Observatory\n- Difficulty: 0.97\n- Focus: navigation\n- Success threshold: 0.52\n### Stage 3: Dry-dock\n- Difficulty: 0.35\n- Focus: optimization\n- Success threshold: 0.53\n### Stage 4: Archives\n- Difficulty: 0.13\n- Focus: navigation\n- Success threshold: 0.60\n### Stage 5: Forge\n- Difficulty: 0.52\n- Focus: navigation\n- Success threshold: 0.65\n### Stage 6: Tide-pool\n- Difficulty: 0.80\n- Focus: crafting\n- Success threshold: 0.69\n### Stage 7: Dry-dock\n- Difficulty: 0.77\n- Focus: analysis\n- Success threshold: 0.85\n\n## Advancement Rule\nProgress when success rate > threshold for 4 consecutive episodes.\n",
+  "hash": "fa2ec054f378e20e"
+}

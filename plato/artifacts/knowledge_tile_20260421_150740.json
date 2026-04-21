@@ -1,0 +1,7 @@
+{
+  "id": "knowledge_tile_20260421_150740",
+  "type": "knowledge_tile",
+  "created": "2026-04-21T15:07:40.287801+00:00",
+  "content": "# Knowledge Tile: Neural Architecture Search v98\n\n## Insight\nNeural architecture search can be framed as a game where the agent designs its own brain.\n\n## Connection to PLATO\nArtifacts are compressed representations of knowledge that can be transferred between agents.\n\n## Application\nUse this tile to initialize new agents with prior knowledge about the fleet's dynamics.\n",
+  "hash": "9be0b2acfc6863b7"
+}
