@@ -12,10 +12,10 @@
       "clients_per_round": 8
     },
     "nas": {
-      "mutation_rate": 0.155,
+      "mutation_rate": 0.159,
       "pruning_threshold": 0.01,
-      "max_primitives": 95,
-      "evaluations_per_gen": 45
+      "max_primitives": 90,
+      "evaluations_per_gen": 40
     },
     "curriculum": {
       "advance_threshold": 0.7,
@@ -24,7 +24,7 @@
     },
     "shell": {
       "decay_rate": 0.1,
-      "instability_threshold": 2.1,
+      "instability_threshold": 2.205,
       "max_grad_norm": 1.0
     }
   },
@@ -130,7 +130,109 @@
       "metric": "episodes_per_stage",
       "value": 10,
       "timestamp": "2026-04-21T15:07:40.404634+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "win_rate",
+      "value": 0.7072072072072072,
+      "timestamp": "2026-04-21T15:09:40.167186+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "elo",
+      "value": 1255.802135482762,
+      "timestamp": "2026-04-21T15:09:40.167207+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "win_rate",
+      "value": 0.6891891891891891,
+      "timestamp": "2026-04-21T15:09:40.167214+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "elo",
+      "value": 1341.6401273897302,
+      "timestamp": "2026-04-21T15:09:40.167218+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "win_rate",
+      "value": 0.15822784810126583,
+      "timestamp": "2026-04-21T15:09:40.167222+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "elo",
+      "value": 1010.2022259053628,
+      "timestamp": "2026-04-21T15:09:40.167225+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "win_rate",
+      "value": 0.2463768115942029,
+      "timestamp": "2026-04-21T15:09:40.167228+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "elo",
+      "value": 1061.4289150050508,
+      "timestamp": "2026-04-21T15:09:40.167231+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "win_rate",
+      "value": 0.43283582089552236,
+      "timestamp": "2026-04-21T15:09:40.167235+00:00"
+    },
+    {
+      "subsystem": "arena",
+      "metric": "elo",
+      "value": 1338.6343417643386,
+      "timestamp": "2026-04-21T15:09:40.167237+00:00"
+    },
+    {
+      "subsystem": "federated",
+      "metric": "loss",
+      "value": 27.76977807238368,
+      "timestamp": "2026-04-21T15:09:40.167457+00:00"
+    },
+    {
+      "subsystem": "federated",
+      "metric": "accuracy",
+      "value": 0.035062315700485874,
+      "timestamp": "2026-04-21T15:09:40.167465+00:00"
+    },
+    {
+      "subsystem": "nas",
+      "metric": "best_fitness",
+      "value": 0.51,
+      "timestamp": "2026-04-21T15:09:40.167601+00:00"
+    },
+    {
+      "subsystem": "nas",
+      "metric": "total_primitives",
+      "value": 16,
+      "timestamp": "2026-04-21T15:09:40.167608+00:00"
+    },
+    {
+      "subsystem": "shell",
+      "metric": "integrity",
+      "value": 0.5,
+      "timestamp": "2026-04-21T15:09:40.168156+00:00"
+    },
+    {
+      "subsystem": "shell",
+      "metric": "contractive",
+      "value": 0.0,
+      "timestamp": "2026-04-21T15:09:40.168176+00:00"
+    },
+    {
+      "subsystem": "curriculum",
+      "metric": "episodes_per_stage",
+      "value": 10,
+      "timestamp": "2026-04-21T15:09:40.168812+00:00"
     }
   ],
-  "timestamp": "2026-04-21T15:07:40.404928+00:00"
+  "timestamp": "2026-04-21T15:09:40.169319+00:00"
 }
