@@ -1,0 +1,7 @@
+{
+  "id": "arena_game_20260421_160001",
+  "type": "arena_game",
+  "created": "2026-04-21T16:00:01.753419+00:00",
+  "content": "# Arena Game: Knowledge Hunt v41\n\n## Mechanics\n- Players: 2\n- State space: continuous field\n- Observation: fog-of-war\n\n## Objectives\n1. Collect rare artifacts\n2. Maintain shell integrity\n\n## Curriculum Stages\n- Stage 1: expert\n- Stage 2: expert\n- Stage 3: easy\n",
+  "hash": "2280c3f9664ca81a"
+}

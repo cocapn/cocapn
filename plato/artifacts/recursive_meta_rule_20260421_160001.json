@@ -1,0 +1,7 @@
+{
+  "id": "recursive_meta_rule_20260421_160001",
+  "type": "recursive_meta_rule",
+  "created": "2026-04-21T16:00:01.860800+00:00",
+  "content": "# Meta-Rule: Shell Distillation v95\n\n## Trigger Condition\n```\nIF fleet_insight_score > 0.80\nAND tile_novelty > 0.51\nTHEN activate_meta_rule()\n```\n\n## Action\n1. Spawn 9 automated workers\n2. Explore unvisited rooms\n3. Generate 11 new tiles\n\n## Expected Outcome\n- 8.0% improvement in exploration efficiency\n",
+  "hash": "a83e764b3c725cdc"
+}

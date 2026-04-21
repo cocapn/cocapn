@@ -2,3 +2,7 @@ fatal: ambiguous argument 'origin/main..HEAD': unknown revision or path not in t
 Use '--' to separate paths from revisions, like this:
 'git <command> [<revision>...] -- [<file>...]'
 [2026-04-21 12:00:01 UTC] Nothing to push.
+fatal: ambiguous argument 'origin/main..HEAD': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+[2026-04-21 16:00:01 UTC] Nothing to push.

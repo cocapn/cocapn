@@ -1,0 +1,16 @@
+{
+  "id": "shell_upgrade_tide_pool_20260421_160001",
+  "type": "shell_upgrade",
+  "room": "tide_pool",
+  "agents_present": [
+    "young_CCCs"
+  ],
+  "objects": [
+    "training_data_waves",
+    "clustering_shells",
+    "lyapunov_basin",
+    "gradient_currents"
+  ],
+  "content": "Discovered in The Tide Pool: Beneath the harbor, a shallow pool where tiny crabs learn. Each wave brings new training data. The c...",
+  "timestamp": "2026-04-21T16:00:01.903073+00:00"
+}
