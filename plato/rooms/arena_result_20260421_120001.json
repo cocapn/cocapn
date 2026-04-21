@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-04-21T12:00:01.268040+00:00",
+  "episodes": 839,
+  "win_rate": 0.486,
+  "elo_start": 1460,
+  "elo_end": 1659,
+  "elo_gain": 199,
+  "discovered_behaviors": [
+    "risk_management",
+    "strategic_retreat"
+  ]
+}

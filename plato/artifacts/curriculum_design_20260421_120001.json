@@ -1,0 +1,7 @@
+{
+  "id": "curriculum_design_20260421_120001",
+  "type": "curriculum_design",
+  "created": "2026-04-21T12:00:01.265649+00:00",
+  "content": "# Curriculum Design: Meta-Learning v79\n\n## Stages\n### Stage 1: Dry-dock\n- Difficulty: 0.95\n- Focus: crafting\n- Success threshold: 0.67\n### Stage 2: Forge\n- Difficulty: 0.38\n- Focus: crafting\n- Success threshold: 0.85\n### Stage 3: Tide-pool\n- Difficulty: 0.27\n- Focus: negotiation\n- Success threshold: 0.83\n### Stage 4: Garden\n- Difficulty: 0.81\n- Focus: optimization\n- Success threshold: 0.54\n### Stage 5: Observatory\n- Difficulty: 0.20\n- Focus: navigation\n- Success threshold: 0.57\n\n## Advancement Rule\nProgress when success rate > threshold for 4 consecutive episodes.\n",
+  "hash": "02d1477d81246308"
+}
