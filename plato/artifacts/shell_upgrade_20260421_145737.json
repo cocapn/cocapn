@@ -1,0 +1,7 @@
+{
+  "id": "shell_upgrade_20260421_145737",
+  "type": "shell_upgrade",
+  "created": "2026-04-21T14:57:37.383166+00:00",
+  "content": "# Shell Upgrade: Attention Focus v92\n\n## Description\nA defensive mechanism that stabilizes learning dynamics.\n\n## Mechanics\n- Activation cost: 0.89 gradient units\n- Duration: 10 steps\n- Cooldown: 50 steps\n\n## Effects\n- Novelty: +18.8%\n- Risk: decreased\n",
+  "hash": "498575c6878a5146"
+}
