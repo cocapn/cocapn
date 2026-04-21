@@ -1,0 +1,7 @@
+{
+  "id": "knowledge_tile_20260421_142145",
+  "type": "knowledge_tile",
+  "created": "2026-04-21T14:21:45.480911+00:00",
+  "content": "# Knowledge Tile: Federated Learning v29\n\n## Insight\nMeta-learning enables rapid adaptation to new tasks by learning how to learn.\n\n## Connection to PLATO\nRooms in PLATO represent different learning environments with unique reward structures.\n\n## Application\nUse as a training signal for the meta-controller that orchestrates fleet-wide learning.\n",
+  "hash": "32aca67b562f26e3"
+}
