@@ -1,0 +1,7 @@
+{
+  "id": "curriculum_design_20260421_150001",
+  "type": "curriculum_design",
+  "created": "2026-04-21T15:00:01.715777+00:00",
+  "content": "# Curriculum Design: Meta-Learning v1\n\n## Stages\n### Stage 1: Garden\n- Difficulty: 0.26\n- Focus: crafting\n- Success threshold: 0.89\n### Stage 2: Garden\n- Difficulty: 0.57\n- Focus: navigation\n- Success threshold: 0.82\n### Stage 3: Garden\n- Difficulty: 0.14\n- Focus: navigation\n- Success threshold: 0.57\n### Stage 4: Archives\n- Difficulty: 0.52\n- Focus: optimization\n- Success threshold: 0.61\n### Stage 5: Garden\n- Difficulty: 0.96\n- Focus: navigation\n- Success threshold: 0.63\n### Stage 6: Garden\n- Difficulty: 0.44\n- Focus: navigation\n- Success threshold: 0.83\n\n## Advancement Rule\nProgress when success rate > threshold for 7 consecutive episodes.\n",
+  "hash": "7132ca256f54ba13"
+}
