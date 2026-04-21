@@ -1,0 +1,7 @@
+{
+  "id": "knowledge_tile_20260421_150940",
+  "type": "knowledge_tile",
+  "created": "2026-04-21T15:09:40.166210+00:00",
+  "content": "# Knowledge Tile: Federated Learning v40\n\n## Insight\nSelf-play creates an automatic curriculum where the opponent difficulty adapts to the learner.\n\n## Connection to PLATO\nGradient flows through the fleet like tides, carrying information from one agent to another.\n\n## Application\nIncorporate into the Codex for automatic retrieval during similar situations.\n",
+  "hash": "0f2b43c3bc1600e8"
+}

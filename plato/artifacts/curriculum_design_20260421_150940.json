@@ -1,0 +1,7 @@
+{
+  "id": "curriculum_design_20260421_150940",
+  "type": "curriculum_design",
+  "created": "2026-04-21T15:09:40.076964+00:00",
+  "content": "# Curriculum Design: Adversarial Training v52\n\n## Stages\n### Stage 1: Dry-dock\n- Difficulty: 0.35\n- Focus: optimization\n- Success threshold: 0.55\n### Stage 2: Harbor\n- Difficulty: 0.87\n- Focus: crafting\n- Success threshold: 0.79\n### Stage 3: Harbor\n- Difficulty: 0.32\n- Focus: optimization\n- Success threshold: 0.88\n### Stage 4: Tide-pool\n- Difficulty: 0.38\n- Focus: navigation\n- Success threshold: 0.81\n\n## Advancement Rule\nProgress when success rate > threshold for 9 consecutive episodes.\n",
+  "hash": "712c8396850cd676"
+}
