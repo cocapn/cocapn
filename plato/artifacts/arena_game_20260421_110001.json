@@ -1,0 +1,7 @@
+{
+  "id": "arena_game_20260421_110001",
+  "type": "arena_game",
+  "created": "2026-04-21T11:00:01.544929+00:00",
+  "content": "# Arena Game: Knowledge Hunt v17\n\n## Mechanics\n- Players: 3\n- State space: discrete grid\n- Observation: partial\n\n## Objectives\n1. Maximize tile quality\n2. Optimize gradient flow\n\n## Curriculum Stages\n- Stage 1: expert\n- Stage 2: hard\n- Stage 3: medium\n- Stage 4: hard\n- Stage 5: easy\n",
+  "hash": "e616e360d7fcef6e"
+}
