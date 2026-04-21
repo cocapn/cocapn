@@ -1,0 +1,7 @@
+{
+  "id": "shell_upgrade_20260421_130001",
+  "type": "shell_upgrade",
+  "created": "2026-04-21T13:00:01.928696+00:00",
+  "content": "# Shell Upgrade: Attention Focus v98\n\n## Description\nA utility upgrade for efficient exploration.\n\n## Mechanics\n- Activation cost: 0.33 gradient units\n- Duration: 19 steps\n- Cooldown: 21 steps\n\n## Effects\n- Efficiency: +20.3%\n- Uncertainty: decreased\n",
+  "hash": "08854e94c002096d"
+}
