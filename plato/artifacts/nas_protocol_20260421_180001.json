@@ -1,0 +1,7 @@
+{
+  "id": "nas_protocol_20260421_180001",
+  "type": "nas_protocol",
+  "created": "2026-04-21T18:00:01.853541+00:00",
+  "content": "# Neural Architecture Search Protocol v100\n\n## Search Space: spiral_positional_encoding\n\n### Primitives\n- Conv3x3, Conv5x5, SelfAttention, FFN, Residual, Concat\n- SpiralAttention (from CCC's shell thesis)\n- FederatedAveragingGate (from Muddy's contributions)\n\n### Evolution Strategy\n- Population size: 40\n- Mutation rate: 0.104\n- Crossover: Uniform with elitism\n- Selection: Tournament (k=5)\n\n### Fitness\nValidation accuracy after 25 epochs of federated training.\n",
+  "hash": "f361d6e41dc34e1b"
+}
