@@ -1,0 +1,7 @@
+{
+  "id": "self_play_config_20260421_152543",
+  "type": "self_play_config",
+  "created": "2026-04-21T15:25:43.568554+00:00",
+  "content": "# Self-Play Arena Configuration v59\n\n## Game: TidePool Tactics\n\n### League\n- Size: 5 historical snapshots\n- Sampling: Diverse\n- Update frequency: Every 244 games\n\n### Training\n- Episodes: 7566\n- Curriculum: adaptive\n- Reward shaping: sparse\n\n### Evaluation\n- Elo K-factor: 17\n- Transfer tasks: 7\n",
+  "hash": "55d019b308f4ed78"
+}

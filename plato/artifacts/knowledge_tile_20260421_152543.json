@@ -1,0 +1,7 @@
+{
+  "id": "knowledge_tile_20260421_152543",
+  "type": "knowledge_tile",
+  "created": "2026-04-21T15:25:43.473449+00:00",
+  "content": "# Knowledge Tile: Meta-Learning v17\n\n## Insight\nSelf-play creates an automatic curriculum where the opponent difficulty adapts to the learner.\n\n## Connection to PLATO\nRooms in PLATO represent different learning environments with unique reward structures.\n\n## Application\nUse as a training signal for the meta-controller that orchestrates fleet-wide learning.\n",
+  "hash": "d626dd3944c684cf"
+}

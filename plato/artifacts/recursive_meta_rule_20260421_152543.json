@@ -1,0 +1,7 @@
+{
+  "id": "recursive_meta_rule_20260421_152543",
+  "type": "recursive_meta_rule",
+  "created": "2026-04-21T15:25:43.472894+00:00",
+  "content": "# Meta-Rule: Gradient Flow Optimization v78\n\n## Trigger Condition\n```\nIF fleet_insight_score > 0.93\nAND tile_novelty > 0.75\nTHEN activate_meta_rule()\n```\n\n## Action\n1. Spawn 10 automated workers\n2. Explore unvisited rooms\n3. Generate 14 new tiles\n\n## Expected Outcome\n- 10.0% improvement in insight quality\n",
+  "hash": "976d64b5fc53b6b0"
+}
