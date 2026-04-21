@@ -1,0 +1,7 @@
+{
+  "id": "arena_game_20260421_170001",
+  "type": "arena_game",
+  "created": "2026-04-21T17:00:01.889704+00:00",
+  "content": "# Arena Game: Knowledge Hunt v50\n\n## Mechanics\n- Players: 3\n- State space: graph topology\n- Observation: partial\n\n## Objectives\n1. Minimize exploration steps\n2. Maintain shell integrity\n\n## Curriculum Stages\n- Stage 1: medium\n- Stage 2: easy\n- Stage 3: medium\n- Stage 4: hard\n- Stage 5: expert\n- Stage 6: medium\n",
+  "hash": "0038249c6e28a997"
+}

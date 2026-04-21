@@ -1,0 +1,7 @@
+{
+  "id": "shell_upgrade_20260421_170001",
+  "type": "shell_upgrade",
+  "created": "2026-04-21T17:00:01.801012+00:00",
+  "content": "# Shell Upgrade: Gradient Blast v75\n\n## Description\nA utility upgrade for efficient exploration.\n\n## Mechanics\n- Activation cost: 0.43 gradient units\n- Duration: 6 steps\n- Cooldown: 36 steps\n\n## Effects\n- Novelty: +48.3%\n- Uncertainty: unchanged\n",
+  "hash": "77be446785c09292"
+}

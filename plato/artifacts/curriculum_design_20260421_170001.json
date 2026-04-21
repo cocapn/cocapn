@@ -1,0 +1,7 @@
+{
+  "id": "curriculum_design_20260421_170001",
+  "type": "curriculum_design",
+  "created": "2026-04-21T17:00:01.889242+00:00",
+  "content": "# Curriculum Design: Progressive Exploration v55\n\n## Stages\n### Stage 1: Dry-dock\n- Difficulty: 0.29\n- Focus: navigation\n- Success threshold: 0.51\n### Stage 2: Garden\n- Difficulty: 0.39\n- Focus: crafting\n- Success threshold: 0.62\n### Stage 3: Archives\n- Difficulty: 0.90\n- Focus: crafting\n- Success threshold: 0.87\n### Stage 4: Garden\n- Difficulty: 0.26\n- Focus: negotiation\n- Success threshold: 0.58\n\n## Advancement Rule\nProgress when success rate > threshold for 9 consecutive episodes.\n",
+  "hash": "e418672168fb5dd5"
+}
