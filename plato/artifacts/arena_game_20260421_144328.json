@@ -1,0 +1,7 @@
+{
+  "id": "arena_game_20260421_144328",
+  "type": "arena_game",
+  "created": "2026-04-21T14:43:28.782356+00:00",
+  "content": "# Arena Game: Recursive Combat v39\n\n## Mechanics\n- Players: 2\n- State space: discrete grid\n- Observation: partial\n\n## Objectives\n1. Collect rare artifacts\n2. Coordinate with allies\n\n## Curriculum Stages\n- Stage 1: expert\n- Stage 2: easy\n- Stage 3: expert\n- Stage 4: easy\n- Stage 5: expert\n",
+  "hash": "a12e38851a2ba566"
+}
