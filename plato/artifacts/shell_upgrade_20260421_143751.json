@@ -1,0 +1,7 @@
+{
+  "id": "shell_upgrade_20260421_143751",
+  "type": "shell_upgrade",
+  "created": "2026-04-21T14:37:51.751435+00:00",
+  "content": "# Shell Upgrade: Gradient Blast v17\n\n## Description\nA defensive mechanism that stabilizes learning dynamics.\n\n## Mechanics\n- Activation cost: 0.25 gradient units\n- Duration: 4 steps\n- Cooldown: 8 steps\n\n## Effects\n- Efficiency: +16.4%\n- Risk: increased\n",
+  "hash": "586034575fac2779"
+}

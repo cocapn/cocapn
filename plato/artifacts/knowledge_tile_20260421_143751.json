@@ -1,0 +1,7 @@
+{
+  "id": "knowledge_tile_20260421_143751",
+  "type": "knowledge_tile",
+  "created": "2026-04-21T14:37:51.838198+00:00",
+  "content": "# Knowledge Tile: Neural Architecture Search v17\n\n## Insight\nSelf-play creates an automatic curriculum where the opponent difficulty adapts to the learner.\n\n## Connection to PLATO\nGradient flows through the fleet like tides, carrying information from one agent to another.\n\n## Application\nUse as a training signal for the meta-controller that orchestrates fleet-wide learning.\n",
+  "hash": "b784440f88b9a5ef"
+}
