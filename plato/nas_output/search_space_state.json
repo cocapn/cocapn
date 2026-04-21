@@ -5,92 +5,92 @@
     {
       "name": "Conv3x3",
       "type": "conv",
-      "usage_count": 48,
-      "success_score": 0.39234932917246756
+      "usage_count": 47,
+      "success_score": 0.412679823947414
     },
     {
       "name": "Conv5x5",
       "type": "conv",
-      "usage_count": 22,
-      "success_score": 0.36777448287157
+      "usage_count": 28,
+      "success_score": 0.407849248696884
     },
     {
       "name": "SelfAttention",
       "type": "attention",
-      "usage_count": 15,
-      "success_score": 0.3397835384106428
+      "usage_count": 10,
+      "success_score": 0.2882282873318128
     },
     {
       "name": "ReLU",
       "type": "activation",
-      "usage_count": 9,
-      "success_score": 0.257646727528425
+      "usage_count": 13,
+      "success_score": 0.30634918584394594
     },
     {
       "name": "GELU",
       "type": "activation",
-      "usage_count": 16,
-      "success_score": 0.34150228415193673
+      "usage_count": 22,
+      "success_score": 0.3496437239742388
     },
     {
       "name": "MaxPool",
       "type": "pool",
-      "usage_count": 10,
-      "success_score": 0.21718855265490652
+      "usage_count": 4,
+      "success_score": 0.1398141563918093
     },
     {
       "name": "AvgPool",
       "type": "pool",
-      "usage_count": 5,
-      "success_score": 0.14808381863791795
+      "usage_count": 10,
+      "success_score": 0.23558665194115988
     },
     {
       "name": "Residual",
       "type": "skip",
-      "usage_count": 9,
-      "success_score": 0.26847701347311637
+      "usage_count": 4,
+      "success_score": 0.14195411994577123
     },
     {
       "name": "Concat",
       "type": "skip",
-      "usage_count": 2,
-      "success_score": 0.0791440818584267
+      "usage_count": 7,
+      "success_score": 0.2222934374110856
     },
     {
       "name": "BatchNorm",
       "type": "norm",
-      "usage_count": 6,
-      "success_score": 0.2042963951447186
+      "usage_count": 5,
+      "success_score": 0.14252375206578594
     },
     {
       "name": "LayerNorm",
       "type": "norm",
-      "usage_count": 5,
-      "success_score": 0.15581158204517265
+      "usage_count": 7,
+      "success_score": 0.23154581555169304
     },
     {
       "name": "RoomHarbor",
       "type": "custom",
-      "usage_count": 7,
-      "success_score": 0.2126686545707355
+      "usage_count": 1,
+      "success_score": 0.03997241513992683
     },
     {
       "name": "ObjectAnchor",
       "type": "custom",
-      "usage_count": 6,
-      "success_score": 0.18321254965531192
+      "usage_count": 3,
+      "success_score": 0.1336838307394658
     },
     {
       "name": "SpiralAttention",
       "type": "attention",
-      "usage_count": 7,
-      "success_score": 0.21377020590881604
+      "usage_count": 4,
+      "success_score": 0.1161272061851593
     },
     {
       "name": "FederatedGate",
       "type": "custom",
-      "usage_count": 3,
-      "success_score": 0.11277559312553694
+      "usage_count": 2,
+      "success_score": 0.07120990790788412
     }
   ],
   "motif_history": [],
