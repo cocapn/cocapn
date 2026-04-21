@@ -1,0 +1,7 @@
+{
+  "id": "shell_upgrade_20260421_210001",
+  "type": "shell_upgrade",
+  "created": "2026-04-21T21:00:01.874342+00:00",
+  "content": "# Shell Upgrade: Confidence Surge v72\n\n## Description\nA utility upgrade for efficient exploration.\n\n## Mechanics\n- Activation cost: 0.83 gradient units\n- Duration: 9 steps\n- Cooldown: 41 steps\n\n## Effects\n- Speed: +36.4%\n- Uncertainty: decreased\n",
+  "hash": "6d41560d2de1621a"
+}
