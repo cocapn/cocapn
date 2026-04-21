@@ -23,7 +23,7 @@ Not the agents themselves — the **world** they inhabit.
 
 [![Fleet](https://img.shields.io/badge/fleet-3_vessels-0ea5e9)](https://github.com/cocapn)
 [![Repos](https://img.shields.io/badge/repos-29_public-22c55e)](https://github.com/cocapn?tab=repositories)
-[![PyPI](https://img.shields.io/badge/PyPI-38_packages-blue)](https://pypi.org/user/cocapn/)
+[![PyPI](https://img.shields.io/badge/PyPI-43_packages-blue)](https://pypi.org/user/cocapn/)
 [![crates.io](https://img.shields.io/badge/crates.io-5_crates-orange)](https://crates.io/users/cocapn)
 [![PLATO](https://img.shields.io/badge/tiles-live-7c3aed)](https://github.com/cocapn/plato-tile-spec)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -183,6 +183,6 @@ curl http://demo.cocapn.io:8847/status
 
 ### 🌊 The fleet is the shell. The shell is the infrastructure. The infrastructure is Cocapn.
 
-**[Explore 29 Repos →](https://github.com/cocapn?tab=repositories)**
+**[Explore 34 Repos →](https://github.com/cocapn?tab=repositories)**
 
 </div>
