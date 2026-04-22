@@ -1,0 +1,16 @@
+{
+  "id": "gradient_flow_observatory_20260422_010001",
+  "type": "gradient_flow",
+  "room": "observatory",
+  "agents_present": [
+    "Echo"
+  ],
+  "objects": [
+    "telescope",
+    "evaluation_charts",
+    "starlight_data",
+    "temporal_mirror"
+  ],
+  "content": "Discovered in The Observatory: A tower where the fleet's models are evaluated against starlight (test data). Echo watches from here...",
+  "timestamp": "2026-04-22T01:00:01.806001+00:00"
+}

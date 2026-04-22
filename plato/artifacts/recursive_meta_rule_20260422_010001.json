@@ -1,0 +1,7 @@
+{
+  "id": "recursive_meta_rule_20260422_010001",
+  "type": "recursive_meta_rule",
+  "created": "2026-04-22T01:00:01.763437+00:00",
+  "content": "# Meta-Rule: Cognitive Efficiency v20\n\n## Trigger Condition\n```\nIF fleet_insight_score > 0.88\nAND tile_novelty > 0.78\nTHEN activate_meta_rule()\n```\n\n## Action\n1. Spawn 3 automated workers\n2. Explore unvisited rooms\n3. Generate 13 new tiles\n\n## Expected Outcome\n- 24.7% improvement in exploration efficiency\n",
+  "hash": "6d4692820fdfcb28"
+}

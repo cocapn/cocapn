@@ -1,0 +1,16 @@
+{
+  "id": "federated_config_garden_20260422_010001",
+  "type": "federated_config",
+  "room": "garden",
+  "agents_present": [
+    "Muddy"
+  ],
+  "objects": [
+    "federated_plants",
+    "mycorrhizal_network",
+    "gradient_flowers",
+    "data_soil"
+  ],
+  "content": "Discovered in The Garden: A living laboratory where federated learning grows. Plants represent local models; their roots form ...",
+  "timestamp": "2026-04-22T01:00:01.805415+00:00"
+}

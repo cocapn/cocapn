@@ -1,0 +1,16 @@
+{
+  "id": "nas_protocol_forge_20260422_010001",
+  "type": "nas_protocol",
+  "room": "forge",
+  "agents_present": [
+    "FM"
+  ],
+  "objects": [
+    "model_registry",
+    "architecture_blueprints",
+    "training_logs",
+    "opponent_forge"
+  ],
+  "content": "Discovered in The Forge: A hot workshop where ML architectures are constructed. Sparks fly as weights are hammered into shape...",
+  "timestamp": "2026-04-22T01:00:01.805017+00:00"
+}
