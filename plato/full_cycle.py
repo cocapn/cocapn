@@ -31,12 +31,15 @@ MEMORY_DIR = WORKSPACE / "memory"
 # Import real PLATO components
 sys.path.insert(0, str(PLATO_DIR))
 from arena import SelfPlayArena, PolicySnapshot
+from arena_combat_bridge import CombatArenaBridge, StrategyToCombatant
 from federated import FederatedAggregator, FleetSimulator
 from nas import SelfModifyingSearchSpace
 from curriculum import CurriculumManager, CurriculumStage, Room
 from shell import LyapunovShell
 from fleet_board import FleetMessageBoard
 from meta_controller import PlatoMetaController, MetaSignal
+from trainable_agent import TrainableAgent, MLPEnvironment, compete
+from swarm import SwarmHive
 
 def log(msg):
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -304,6 +307,37 @@ def generate_knowledge_tile(corpus):
         "Use as a training signal for the meta-controller that orchestrates fleet-wide learning.",
     ])}
 """
+
+def run_combat_arena():
+    """Run algorithmic combat matches using spells & equipment."""
+    log("Running algorithmic combat arena...")
+    
+    arena = SelfPlayArena(PLATO_DIR / "arena_state")
+    bridge = CombatArenaBridge(arena)
+    
+    agents = ["Sparrow", "Muddy", "CCC", "Echo", "KimiClaw"]
+    for agent in agents:
+        if agent not in arena.league:
+            arena.add_snapshot(agent)
+    
+    # Run a few combat matches
+    target = random.choice(agents)
+    summary, matches = bridge.run_combat_training_session(
+        target, num_matches=10, opponent_strategy="pfsp"
+    )
+    
+    log(f"Combat arena: {target} — {summary['wins']:.0f}/{summary['matches']} wins, "
+        f"avg {summary['avg_duration']:.1f} rounds, "
+        f"archetypes: {set(summary['archetypes'])}")
+    
+    # Save a sample combat log for inspection
+    if bridge.combat_history:
+        latest = bridge.combat_history[-1]
+        sample_file = PLATO_DIR / "artifacts" / f"combat_log_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
+        with open(sample_file, "w") as f:
+            json.dump(latest, f, indent=2)
+    
+    return summary
 
 def run_self_play_simulation():
     """Run a real self-play training session using the arena."""
@@ -671,6 +705,9 @@ def main():
     
     # Self-play arena
     run_self_play_simulation()
+    
+    # Algorithmic combat arena (spells & equipment)
+    run_combat_arena()
     
     # Federated learning round
     run_federated_round()
