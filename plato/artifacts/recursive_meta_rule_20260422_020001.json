@@ -1,0 +1,7 @@
+{
+  "id": "recursive_meta_rule_20260422_020001",
+  "type": "recursive_meta_rule",
+  "created": "2026-04-22T02:00:01.807936+00:00",
+  "content": "# Meta-Rule: Shell Distillation v82\n\n## Trigger Condition\n```\nIF fleet_insight_score > 0.75\nAND tile_novelty > 0.60\nTHEN activate_meta_rule()\n```\n\n## Action\n1. Spawn 10 automated workers\n2. Explore frontier concepts\n3. Generate 5 new tiles\n\n## Expected Outcome\n- 20.6% improvement in insight quality\n",
+  "hash": "4af0704e974e2717"
+}

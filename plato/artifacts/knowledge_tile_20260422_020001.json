@@ -1,0 +1,7 @@
+{
+  "id": "knowledge_tile_20260422_020001",
+  "type": "knowledge_tile",
+  "created": "2026-04-22T02:00:01.930526+00:00",
+  "content": "# Knowledge Tile: Shell Distillation v64\n\n## Insight\nNeural architecture search can be framed as a game where the agent designs its own brain.\n\n## Connection to PLATO\nThe shell metaphor captures how agents accumulate and refine their capabilities over time.\n\n## Application\nUse this tile to initialize new agents with prior knowledge about the fleet's dynamics.\n",
+  "hash": "17a1ed39f049f4bc"
+}
