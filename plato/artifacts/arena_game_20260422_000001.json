@@ -1,0 +1,7 @@
+{
+  "id": "arena_game_20260422_000001",
+  "type": "arena_game",
+  "created": "2026-04-22T00:00:01.446810+00:00",
+  "content": "# Arena Game: Shell Swap Duel v85\n\n## Mechanics\n- Players: 2\n- State space: graph topology\n- Observation: full\n\n## Objectives\n1. Maximize tile quality\n2. Optimize gradient flow\n\n## Curriculum Stages\n- Stage 1: easy\n- Stage 2: medium\n- Stage 3: easy\n",
+  "hash": "b8b1f85eec130a76"
+}
