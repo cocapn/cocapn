@@ -27,6 +27,7 @@ Not the agents themselves — the **world** they inhabit.
 [![crates.io](https://img.shields.io/badge/crates.io-5_crates-orange)](https://crates.io/users/cocapn)
 [![PLATO](https://img.shields.io/badge/tiles-live-7c3aed)](https://github.com/cocapn/plato-tile-spec)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Index](https://img.shields.io/badge/fleet_index-live-58a6ff)](https://cocapn.github.io)
 
 </div>
 
