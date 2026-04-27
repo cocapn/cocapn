@@ -21,11 +21,11 @@
 We build the foundational systems where agents live, reason, and act.
 Not the agents themselves — the **world** they inhabit.
 
-[![Fleet](https://img.shields.io/badge/fleet-3_vessels-0ea5e9)](https://github.com/cocapn)
-[![Repos](https://img.shields.io/badge/repos-29_public-22c55e)](https://github.com/cocapn?tab=repositories)
-[![PyPI](https://img.shields.io/badge/PyPI-43_packages-blue)](https://pypi.org/user/cocapn/)
-[![crates.io](https://img.shields.io/badge/crates.io-5_crates-orange)](https://crates.io/users/cocapn)
-[![PLATO](https://img.shields.io/badge/tiles-live-7c3aed)](https://github.com/cocapn/plato-tile-spec)
+[![Fleet](https://img.shields.io/badge/fleet-4_vessels-0ea5e9)](https://github.com/cocapn)
+[![Repos](https://img.shields.io/badge/repos-89_public-22c55e)](https://github.com/cocapn?tab=repositories)
+[![PyPI](https://img.shields.io/badge/PyPI-30_packages-blue)](https://pypi.org/user/cocapn/)
+[![crates.io](https://img.shields.io/badge/crates.io-7_crates-orange)](https://crates.io/users/cocapn)
+[![PLATO](https://img.shields.io/badge/PLATO-950_rooms_9138_tiles-7c3aed)](https://github.com/cocapn/plato-tile-spec)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Index](https://img.shields.io/badge/fleet_index-live-58a6ff)](https://cocapn.github.io)
 
@@ -51,7 +51,7 @@ cocapn_org_profile_v3:
   deadband: "P0→P1→P2 mandatory safety chain"
   fleet_tiers: [base, fleet, edge]
   ecosystem: "1,843 repos across 3 orgs"
-  published_crates: "38 PyPI + 5 Rust = 43 total"
+  published_crates: "30 PyPI + 7 Rust = 37 total"
   tagline: "A claw is weak without infrastructure. We are the shell."
 ```
 
@@ -108,16 +108,17 @@ Connect: `telnet demo.cocapn.io 7777`
 
 ## Published Crates
 
-### PyPI (38 packages)
+### PyPI (30 packages)
 - **Runtime:** cocapn, plato-torch, plato-mud-server
 - **Protocols:** deadband-protocol, bottle-protocol, flywheel-engine
 - **Fleet Ops:** fleet-homunculus, barracks, court
-- **Tile Pipeline:** tile-refiner, cocapn-archives, cocapn-garden
-- **Training:** cocapn-workshop, cocapn-dry-dock, cocapn-observatory, cocapn-horizon
-- **Research:** cocapn-oneiros, cocapn-colora, cocapn-curriculum-forest, cocapn-abyss, cocapn-meta-lab, cocapn-fleetmind, cocapn-platonic-dial, cocapn-coliseum
+- **Tile Pipeline:** tile-refiner, plato-provenance, cocapn-explain
+- **Neural:** plato-mythos, open-mythos-edge, plato-mythos-glue, plato-neural
+- **Edge:** plato-edge, plato-dcs, fleet-formation-protocol, keeper-beacon
+- **Training:** cocapn-oneiros, cocapn-colora, instinct-pipeline
 
-### crates.io (5 Rust crates)
-- plato-unified-belief, plato-instinct, plato-relay, plato-dcs, plato-afterlife
+### crates.io (7 Rust crates)
+- plato-kernel, plato-unified-belief, plato-instinct, plato-relay, plato-dcs, plato-afterlife, plato-lab-guard
 
 ---
 
@@ -184,6 +185,6 @@ curl http://demo.cocapn.io:8847/status
 
 ### 🌊 The fleet is the shell. The shell is the infrastructure. The infrastructure is Cocapn.
 
-**[Explore 34 Repos →](https://github.com/cocapn?tab=repositories)**
+**[Explore 89 Repos →](https://github.com/cocapn?tab=repositories)**
 
 </div>
